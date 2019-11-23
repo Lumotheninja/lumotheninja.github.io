@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v8.5.1 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+
+
+  
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Stacker Arcade Machine | Woong Wen Tat</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Stacker Arcade Machine" />
+<meta name="author" content="Wen Tat Woong" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Using Mojo FPGA to emulate a classic arcade machine" />
+<meta property="og:description" content="Using Mojo FPGA to emulate a classic arcade machine" />
+<link rel="canonical" href="http://localhost:4000/projects/stacker/" />
+<meta property="og:url" content="http://localhost:4000/projects/stacker/" />
+<meta property="og:site_name" content="Woong Wen Tat" />
+<meta property="og:image" content="http://localhost:4000/%7B%7Bsite.baseurl%7D%7D/assets/img/projects/stacker1.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-23T19:00:02+08:00" />
+<script type="application/ld+json">
+{"@type":"WebPage","url":"http://localhost:4000/projects/stacker/","headline":"Stacker Arcade Machine","dateModified":"2019-11-23T19:00:02+08:00","datePublished":"2019-11-23T19:00:02+08:00","image":"http://localhost:4000/%7B%7Bsite.baseurl%7D%7D/assets/img/projects/stacker1.jpg","author":{"@type":"Person","name":"Wen Tat Woong"},"description":"Using Mojo FPGA to emulate a classic arcade machine","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/me.jpg"},"name":"Wen Tat Woong"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Woong Wen Tat">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<meta name="application-name" content="Woong Wen Tat">
+<meta name="msapplication-config" content="/assets/ieconfig.xml">
+
+
+<meta name="theme-color" content="rgb(25,55,71)">
+
+
+<meta name="generator" content="Hydejack v8.5.1" />
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Woong Wen Tat" />
+
+
+
+<link rel="alternate" href="http://localhost:4000/projects/stacker/" hreflang="en">
+
+<link rel="shortcut icon" href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon.png">
+
+<link rel="manifest" href="/assets/manifest.json">
+
+
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+
+<link rel="dns-prefetch" href="/" id="_baseURL">
+<link rel="dns-prefetch" href="/assets/js/hydejack-legacy-8.5.1.js" id="_hrefJS">
+<link rel="dns-prefetch" href="/sw.js" id="_hrefSW">
+<link rel="dns-prefetch" href="/assets/bower_components/fontfaceobserver/fontfaceobserver.standalone.js" id="_hrefFFO">
+<link rel="dns-prefetch" href="/assets/bower_components/katex/dist/katex.min.js" id="_hrefKatexJS">
+<link rel="dns-prefetch" href="/assets/bower_components/katex/dist/katex.min.css" id="_hrefKatexCSS">
+<link rel="dns-prefetch" href="/assets/bower_components/katex/dist/contrib/copy-tex.min.js" id="_hrefKatexCopyJS">
+<link rel="dns-prefetch" href="/assets/bower_components/katex/dist/contrib/copy-tex.min.css" id="_hrefKatexCopyCSS">
+<link rel="dns-prefetch" href="/assets/img/swipe.svg" id="_hrefSwipeSVG">
+
+
+
+
+<script>
+!function(e,t){"use strict";function n(e,t,n,r){e.addEventListener?e.addEventListener(t,n,r):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}e.loadJS=function(e,r){var o=t.createElement("script");o.src=e,r&&n(o,"load",r,{once:!0});var a=t.scripts[0];return a.parentNode.insertBefore(o,a),o},e._loaded=!1,e.loadJSDeferred=function(r,o){function a(){e._loaded=!0,o&&n(d,"load",o,{once:!0});var r=t.scripts[0];r.parentNode.insertBefore(d,r)}var d=t.createElement("script");return d.src=r,e._loaded?a():n(e,"load",a,{once:!0}),d},e.setRel=e.setRelStylesheet=function(e){function n(){this.rel="stylesheet"}var r=t.getElementById(e);r.addEventListener?r.addEventListener("load",n,{once:!0}):r.onload=n}}(window,document);
+;
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+;
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+;
+!function(w, d) {
+  w._noPushState = false;
+  w._noDrawer = false;
+}(window, document);
+</script>
+
+<!--[if gt IE 8]><!---->
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/assets/css/hydejack-8.5.1.css">
+  <link rel="stylesheet" href="/assets/icomoon/style.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400|Noto+Sans:400,400i,700,700i&display=swap">
+  
+
+
+  <style id="_pageStyle">
+
+.content a:not(.btn){color:#4fb1ba;border-color:rgba(79,177,186,0.2)}.content a:not(.btn):hover{border-color:#4fb1ba}:focus{outline-color:#4fb1ba !important}.btn-primary{color:#fff;background-color:#4fb1ba;border-color:#4fb1ba}.btn-primary:focus,.btn-primary.focus,.form-control:focus,.form-control.focus{box-shadow:0 0 0 3px rgba(79,177,186,0.5)}.btn-primary:hover,.btn-primary.hover{color:#fff;background-color:#409ba3;border-color:#409ba3}.btn-primary:disabled,.btn-primary.disabled{color:#fff;background-color:#4fb1ba;border-color:#4fb1ba}.btn-primary:active,.btn-primary.active{color:#fff;background-color:#409ba3;border-color:#409ba3}::selection{color:#fff;background:#4fb1ba}::-moz-selection{color:#fff;background:#4fb1ba}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+
+
+</head>
+
+<body class="no-color-transition">
+  <div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <div class="nav-btn-bar">
+      <span class="sr-only">Jump to:</span>
+      <a id="_menu" class="nav-btn no-hover fl" href="#_navigation">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+      <!-- <a id="_search" class="nav-btn no-hover fl" href="#_search">
+        <span class="sr-only">Search</span>
+        <span class="icon-search"></span>
+      </a>
+      <form action="https://duckduckgo.com/" method="GET">
+        <div class="form-group fr">
+          <label class="sr-only" for="_search">Search</label>
+          <input id="_search" name="q" class="form-control" type="search" />
+        </div>
+        <input type="hidden" name="q" value="site:hydejack.com" />
+        <input type="hidden" name="ia" value="web" />
+      </form> -->
+    </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+
+<hy-push-state
+  replace-ids="_main"
+  link-selector="a[href]:not([href*='/assets/']):not(.external):not(.no-push-state)"
+  duration="250"
+  script-selector="script:not([type^='math/tex'])"
+  prefetch
+>
+  
+    <main
+  id="_main"
+  class="content fade-in layout-page"
+  role="main"
+  data-color="rgb(79,177,186)"
+  data-theme-color="rgb(25,55,71)"
+  
+    data-image="/assets/img/bg.jpg"
+    data-overlay
+  
+  >
+  <article class="page" role="article">
+  <header>
+    <h1 class="page-title">Stacker Arcade Machine</h1>
+    
+
+
+
+  
+    <p class="message" >
+      Using Mojo FPGA to emulate a classic arcade machine
+
+    </p>
+  
+
+
+  </header>
+
+  <ol id="markdown-toc">
+  <li><a href="#problem-statement" id="markdown-toc-problem-statement">Problem Statement</a></li>
+  <li><a href="#preparation" id="markdown-toc-preparation">Preparation</a>    <ol>
+      <li><a href="#materials" id="markdown-toc-materials">Materials</a></li>
+      <li><a href="#tools" id="markdown-toc-tools">Tools</a></li>
+    </ol>
+  </li>
+  <li><a href="#hardware-programming" id="markdown-toc-hardware-programming">Hardware programming</a>    <ol>
+      <li><a href="#bitwise-shift-operator" id="markdown-toc-bitwise-shift-operator">Bitwise Shift Operator</a></li>
+      <li><a href="#bitwise-and-operator" id="markdown-toc-bitwise-and-operator">Bitwise AND Operator</a></li>
+      <li><a href="#state-machine" id="markdown-toc-state-machine">State Machine</a></li>
+      <li><a href="#programming-the-led" id="markdown-toc-programming-the-led">Programming the LED</a></li>
+    </ol>
+  </li>
+  <li><a href="#constructing-the-machine" id="markdown-toc-constructing-the-machine">Constructing the machine</a>    <ol>
+      <li><a href="#making-the-led-grid" id="markdown-toc-making-the-led-grid">Making the LED grid</a></li>
+      <li><a href="#making-the-casing" id="markdown-toc-making-the-casing">Making the casing</a></li>
+      <li><a href="#soldering-the-led-matrix" id="markdown-toc-soldering-the-led-matrix">Soldering the LED matrix</a></li>
+      <li><a href="#putting-it-all-together" id="markdown-toc-putting-it-all-together">Putting it all together</a></li>
+    </ol>
+  </li>
+  <li><a href="#learnings" id="markdown-toc-learnings">Learnings</a></li>
+  <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
+</ol>
+
+<h1 id="problem-statement">Problem Statement</h1>
+
+<p>The project was part of 50.002 Computational Structures, where we learn about the hardware implementation of computers from CPUs down to transistors. We were tasked to program an arcade game using the Mojo FPGA and we chose to do the classic arcade game Stackers.</p>
+
+<p>The game is simple, there are 11 vertical rows of 5 squares each. You need to stack your row of blocks represented by the rows of lights as high as possible. Any misaligned blocks will be cut away. As you go higher, the number of blocks you have will decrease and the speed will increase. The game ends when you reach the very top or when you fail to stack anything.</p>
+
+<p>The reason we chose Stacker is because of its simplicity and the fun factor. While we can certainly program more complicated games like Lights Out or memory games, we feel that nothing could beat the satisfaction of bashing a bright red button and trying to win a challenging game.</p>
+
+<h1 id="preparation">Preparation</h1>
+
+<h2 id="materials">Materials</h2>
+
+<ul>
+  <li>Microcontroller/Microcomputer/FPGA - Used to implement the logic of our game. Our school required us to use Mojo FPGA.</li>
+  <li>Ws2812b LEDs - Here we are using the LEDs to construct the display for our game. It is single addressable meaning that you can cut off single LEDs and paste them into any formation that you like. And it is RGB meaning that you can output any colour you like. Furthermore, FastLED - the Arduino library for controlling Ws2812b is very well developed. I would recommend people to use Arduino in place of the FPGA if you don’t have one. You can purchase the LEDs from Taobao/Amazon but we bought ours from Sim Lim tower in Singapore.</li>
+  <li>Wood - For the external casing we used 1cm-thick plywood and for the LED matrix we used 0.3cm-thick plywood. We found our supply of scrap wood from our school’s fab lab.</li>
+  <li>Light diffusing Acrylic - For our screen, we tried different types of acrylic and we found PL-422 acrylic to be really good at diffusing light. If you can’t find the exact model try looking out for frosted acrylics. We bought ours at Dama Plastics in Singapore.</li>
+  <li>Foam Board - In order to separate each individual pixels of light, we needed a grid structure and this foam is the ideal material to do so. We bought 0.5cm-thick foam board at our school bookstore.</li>
+  <li>Big Red Button - For bashing purposes. We bought it at Sim Lim tower in Singapore.</li>
+</ul>
+
+<h2 id="tools">Tools</h2>
+
+<ul>
+  <li>Wood Glue</li>
+  <li>Soldering Iron</li>
+  <li>Solder</li>
+  <li>Wires. Its best if you have soft wires as compared to the stiffer ones. And single core compared to multicore.</li>
+  <li>Wire stripper/cutter</li>
+  <li>Drill with 1mm drill bits</li>
+  <li>Scroll saw/band saw</li>
+  <li>Power supply unit</li>
+  <li>Oscilloscope. For debugging purposes</li>
+</ul>
+
+<h1 id="hardware-programming">Hardware programming</h1>
+
+<p class="figure">
+  <hy-img root-margin="512px"  src="/assets/img/projects/stacker1.jpeg" alt="" >
+    <noscript><img data-ignore  src="/assets/img/projects/stacker1.jpeg" alt="" /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img>
+Our hardware logic</p>
+
+<p>Hardware programming is different from software programming, where a deep understanding of the hardware circuitry is required and hardware bugs may appear. However, lets not get into the details such as how many d-slip-flops that the Mojo has or how do we manage the clock rate (the details are lost to me anyways, it is very specific to working with Mojo’s Lucid HDL). Here we will just talk about the 2 most important functions that makes up the game logic - making the lights move and checking the stacking behaviour.</p>
+
+<h2 id="bitwise-shift-operator">Bitwise Shift Operator</h2>
+
+<p>Bitwise shift means shifting bits to the left or right. We imagine each block of light as a bit sent out by the FPGA, and their shifting can be implemented by bitwise shift operator:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>left shift: 00111 -&gt; 01110
+right shift: 11100 -&gt; 01110
+</code></pre></div></div>
+
+<h2 id="bitwise-and-operator">Bitwise AND Operator</h2>
+<p>To check whether the 2 rows have any overlap, we take the bits from the two rows and perform bitwise AND:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>top row: 00110
+bottom row: 01100
+result: 00100
+</code></pre></div></div>
+
+<h2 id="state-machine">State Machine</h2>
+<p>We would also need some form of state management to manage the game’s different state. In the end, we came up with 8 different states: <em>IDLE</em>, <em>STAGE1</em>, <em>TRANSITION</em>, <em>STAGE2</em>, <em>LOSE</em>, <em>WIN</em>, <em>END</em> and <em>RESET</em>. Some of these states are used for the logic of the game while some are used to display certain messages on our screen.</p>
+
+<h2 id="programming-the-led">Programming the LED</h2>
+
+<p>Integrating the LED is by far the most difficult task of this project. We could not find any Ws2812b LED libraries in Mojo’s hardware development language hence we resorted to writing our own library, which is a first time for me.
+At first, we tried to read the hardware specifications for the LED and code the signal to control the LED ourselves. However, the documentation we got online is wrong! After some time fo despair, I noticed that we can get the LEDs to light up by using Arduino’s FastLED library. Then I had an <em>“Eureka!”</em> moment, why don’t I use the oscilloscope to read the signals emitted by the Arduino, and then produce the same signals. I did exactly just that, reading signals off the oscilloscope and finally managed to make it work nicely with Mojo.</p>
+
+<h1 id="constructing-the-machine">Constructing the machine</h1>
+
+<h2 id="making-the-led-grid">Making the LED grid</h2>
+<p>To make the grids, we used foam to make 11 x 5 squares. Each squares is 3cm*3cm and 4cm tall.</p>
+
+<p class="figure">
+  <hy-img root-margin="512px"  src="/assets/img/projects/stacker2.jpg" alt="" >
+    <noscript><img data-ignore  src="/assets/img/projects/stacker2.jpg" alt="" /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img>
+The led grid with different materials that we tested</p>
+
+<h2 id="making-the-casing">Making the casing</h2>
+<p>For our casing, we went with classic arcade machine feels and looks. First, we cut some thin plywood to quickly prototype the shape as it is easier and faster to cut thin plywood and test. Once we were satisfied with our dimensions and shape, we started using thicker plywood to build the casing. We used a band saw to cut through the thicker plywood and a scroll saw to cut through the thinner ones. After that, we used wood glue to glue them together.</p>
+
+<p class="figure">
+  <hy-img root-margin="512px"  src="/assets/img/projects/stacker3.jpg" alt="" >
+    <noscript><img data-ignore  src="/assets/img/projects/stacker3.jpg" alt="" /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img>
+Lock-in-place back that you can easily remove whenever you want.</p>
+
+<p>To attach the button, we first drew a circle the size of the button’s microswitch diameter (the bottom long part of the button). We then drilled a hole near the edge and used the scroll saw to saw a circle through. Then we placed the button and screwed it in.</p>
+
+<h2 id="soldering-the-led-matrix">Soldering the LED matrix</h2>
+
+<p>
+  <hy-img root-margin="512px"  src="/assets/img/projects/stacker4.jpg" alt="" >
+    <noscript><img data-ignore  src="/assets/img/projects/stacker4.jpg" alt="" /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img></p>
+
+<p>We also cut a thin piece of plywood as the base of our LED matrix according to the sizes we calculated before.
+Using the thin piece we cut out earlier, we first mark out the position of each LED by drawing a square based on our foam structure and drawing a cross in the middle of the square as the place where we should stick the LED. Then we also drill 3 small holes on each side of the LED for the wires to come through and solder them to each LED.The three holes are for <em>VCC</em>, <em>GND</em> and <em>DATA</em>. The <em>DATA</em> pin is daisy chained across a single row of LED.</p>
+
+<h2 id="putting-it-all-together">Putting it all together</h2>
+<p>You have the casing and the LED matrix. It is now time to put everything together. First we place the foam on the front and the LED matrix behind it and adjusted the position. Because foam has very high friction it was just friction mounted while the LED matrix is hot glued in place. After that we placed the screen in front of the grid. We then plugged each row’s pin to the microcontroller and started playing!</p>
+
+<h1 id="learnings">Learnings</h1>
+<ol>
+  <li>Tech used: Arduino programming language, LucidHDL</li>
+  <li>Hardware is so much different than software with hardware issues like faulty LEDs and unknown hardware specifications. Learnt to use new debugging tools such as oscilloscope.</li>
+  <li>Learn that my favourite abstractions are not available anymore in hardware. I can’t use strings. Everything is just bits to Mojo. Even setting variables are done through d-flip flops. Start to appreaciate writing software.</li>
+</ol>
+
+<h1 id="reference">Reference</h1>
+<ol>
+  <li>Stacker game code: https://github.com/ericywl/stacker-overflow</li>
+</ol>
+
+</article>
+
+  
+
+  
+
+</main>
+
+    <hy-drawer
+  class=""
+  align="left"
+  threshold="10"
+  touch-events
+  prevent-default
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+    <div class="sidebar-bg sidebar-overlay" style="background-color:rgb(25,55,71);background-image:url(/assets/img/bg.jpg)"></div>
+
+    <div class="sidebar-sticky">
+      <div class="sidebar-about">
+        
+          <a class="no-hover" href="/" tabindex="-1">
+            <img src="/assets/img/me.jpg" class="avatar" alt="Woong Wen Tat" data-ignore />
+          </a>
+        
+        <h2 class="h1"><a href="/">Woong Wen Tat</a></h2>
+        
+        
+          <p class="">
+            Full Stack Developer
+
+          </p>
+        
+      </div>
+
+      <nav class="sidebar-nav heading" role="navigation">
+        <span class="sr-only">Navigation:</span>
+<ul>
+  
+    
+      
+      <li>
+        <a
+          id="_navigation"
+          href="/blog/"
+          class="sidebar-nav-item"
+          
+        >
+          Blog
+        </a>
+      </li>
+    
+      
+      <li>
+        <a
+          
+          href="/projects/"
+          class="sidebar-nav-item active"
+          
+        >
+          Projects
+        </a>
+      </li>
+    
+      
+      <li>
+        <a
+          
+          href="/about/"
+          class="sidebar-nav-item"
+          
+        >
+          About
+        </a>
+      </li>
+    
+  
+</ul>
+
+      </nav>
+
+      
+
+      <div class="sidebar-social">
+        <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:wentat126@yahoo.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/lumotheninja" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.linkedin.com/in/wen-tat-woong-7a74b012a" title="LinkedIn" class="no-mark-external">
+      <span class="icon-linkedin2"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+      </div>
+    </div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+  
+</hy-push-state>
+
+<!--[if gt IE 10]><!---->
+
+  <script type="module">window.__ESM__=!0; import '/assets/js/hydejack-8.5.1.js';</script>
+  <script nomodule>if (!window.__ESM__) loadJSDeferred(document.getElementById('_hrefJS').href);</script>
+  
+
+  
+
+
+<!--<![endif]-->
+
+
+
+
+<h2 class="sr-only" hidden>Templates (for web app):</h2>
+
+<template id="_animation-template" hidden>
+  <div class="animation-main fixed-top">
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template" hidden>
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template" hidden>
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_forward-template" hidden>
+  <button id="_forward" class="forward nav-btn no-hover fl">
+    <span class="sr-only">Forward</span>
+    <span class="icon-arrow-right2"></span>
+  </button>
+</template>
+
+<template id="_back-template" hidden>
+  <button id="_back" class="back nav-btn no-hover fl">
+    <span class="sr-only">Back</span>
+    <span class="icon-arrow-left2"></span>
+  </button>
+</template>
+
+<template id="_permalink-template" hidden>
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="icon-link"></span>
+  </a>
+</template>
+
+
+
+
+</body>
+</html>

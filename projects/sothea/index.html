@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v8.5.1 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+
+
+  
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Project Sothea Medical Database | Woong Wen Tat</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Project Sothea Medical Database" />
+<meta name="author" content="Wen Tat Woong" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Offline medical database with facial recognition hosted on a Raspberry Pi" />
+<meta property="og:description" content="Offline medical database with facial recognition hosted on a Raspberry Pi" />
+<link rel="canonical" href="http://localhost:4000/projects/sothea/" />
+<meta property="og:url" content="http://localhost:4000/projects/sothea/" />
+<meta property="og:site_name" content="Woong Wen Tat" />
+<meta property="og:image" content="http://localhost:4000/%7B%7Bsite.baseurl%7D%7D/assets/img/projects/sothea4.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-23T19:00:02+08:00" />
+<script type="application/ld+json">
+{"@type":"WebPage","url":"http://localhost:4000/projects/sothea/","headline":"Project Sothea Medical Database","dateModified":"2019-11-23T19:00:02+08:00","datePublished":"2019-11-23T19:00:02+08:00","image":"http://localhost:4000/%7B%7Bsite.baseurl%7D%7D/assets/img/projects/sothea4.jpg","author":{"@type":"Person","name":"Wen Tat Woong"},"description":"Offline medical database with facial recognition hosted on a Raspberry Pi","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/me.jpg"},"name":"Wen Tat Woong"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Woong Wen Tat">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<meta name="application-name" content="Woong Wen Tat">
+<meta name="msapplication-config" content="/assets/ieconfig.xml">
+
+
+<meta name="theme-color" content="rgb(25,55,71)">
+
+
+<meta name="generator" content="Hydejack v8.5.1" />
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Woong Wen Tat" />
+
+
+
+<link rel="alternate" href="http://localhost:4000/projects/sothea/" hreflang="en">
+
+<link rel="shortcut icon" href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon.png">
+
+<link rel="manifest" href="/assets/manifest.json">
+
+
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+
+<link rel="dns-prefetch" href="/" id="_baseURL">
+<link rel="dns-prefetch" href="/assets/js/hydejack-legacy-8.5.1.js" id="_hrefJS">
+<link rel="dns-prefetch" href="/sw.js" id="_hrefSW">
+<link rel="dns-prefetch" href="/assets/bower_components/fontfaceobserver/fontfaceobserver.standalone.js" id="_hrefFFO">
+<link rel="dns-prefetch" href="/assets/bower_components/katex/dist/katex.min.js" id="_hrefKatexJS">
+<link rel="dns-prefetch" href="/assets/bower_components/katex/dist/katex.min.css" id="_hrefKatexCSS">
+<link rel="dns-prefetch" href="/assets/bower_components/katex/dist/contrib/copy-tex.min.js" id="_hrefKatexCopyJS">
+<link rel="dns-prefetch" href="/assets/bower_components/katex/dist/contrib/copy-tex.min.css" id="_hrefKatexCopyCSS">
+<link rel="dns-prefetch" href="/assets/img/swipe.svg" id="_hrefSwipeSVG">
+
+
+
+
+<script>
+!function(e,t){"use strict";function n(e,t,n,r){e.addEventListener?e.addEventListener(t,n,r):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}e.loadJS=function(e,r){var o=t.createElement("script");o.src=e,r&&n(o,"load",r,{once:!0});var a=t.scripts[0];return a.parentNode.insertBefore(o,a),o},e._loaded=!1,e.loadJSDeferred=function(r,o){function a(){e._loaded=!0,o&&n(d,"load",o,{once:!0});var r=t.scripts[0];r.parentNode.insertBefore(d,r)}var d=t.createElement("script");return d.src=r,e._loaded?a():n(e,"load",a,{once:!0}),d},e.setRel=e.setRelStylesheet=function(e){function n(){this.rel="stylesheet"}var r=t.getElementById(e);r.addEventListener?r.addEventListener("load",n,{once:!0}):r.onload=n}}(window,document);
+;
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+;
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+;
+!function(w, d) {
+  w._noPushState = false;
+  w._noDrawer = false;
+}(window, document);
+</script>
+
+<!--[if gt IE 8]><!---->
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/assets/css/hydejack-8.5.1.css">
+  <link rel="stylesheet" href="/assets/icomoon/style.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400|Noto+Sans:400,400i,700,700i&display=swap">
+  
+
+
+  <style id="_pageStyle">
+
+.content a:not(.btn){color:#4fb1ba;border-color:rgba(79,177,186,0.2)}.content a:not(.btn):hover{border-color:#4fb1ba}:focus{outline-color:#4fb1ba !important}.btn-primary{color:#fff;background-color:#4fb1ba;border-color:#4fb1ba}.btn-primary:focus,.btn-primary.focus,.form-control:focus,.form-control.focus{box-shadow:0 0 0 3px rgba(79,177,186,0.5)}.btn-primary:hover,.btn-primary.hover{color:#fff;background-color:#409ba3;border-color:#409ba3}.btn-primary:disabled,.btn-primary.disabled{color:#fff;background-color:#4fb1ba;border-color:#4fb1ba}.btn-primary:active,.btn-primary.active{color:#fff;background-color:#409ba3;border-color:#409ba3}::selection{color:#fff;background:#4fb1ba}::-moz-selection{color:#fff;background:#4fb1ba}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+
+
+</head>
+
+<body class="no-color-transition">
+  <div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <div class="nav-btn-bar">
+      <span class="sr-only">Jump to:</span>
+      <a id="_menu" class="nav-btn no-hover fl" href="#_navigation">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+      <!-- <a id="_search" class="nav-btn no-hover fl" href="#_search">
+        <span class="sr-only">Search</span>
+        <span class="icon-search"></span>
+      </a>
+      <form action="https://duckduckgo.com/" method="GET">
+        <div class="form-group fr">
+          <label class="sr-only" for="_search">Search</label>
+          <input id="_search" name="q" class="form-control" type="search" />
+        </div>
+        <input type="hidden" name="q" value="site:hydejack.com" />
+        <input type="hidden" name="ia" value="web" />
+      </form> -->
+    </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+
+<hy-push-state
+  replace-ids="_main"
+  link-selector="a[href]:not([href*='/assets/']):not(.external):not(.no-push-state)"
+  duration="250"
+  script-selector="script:not([type^='math/tex'])"
+  prefetch
+>
+  
+    <main
+  id="_main"
+  class="content fade-in layout-page"
+  role="main"
+  data-color="rgb(79,177,186)"
+  data-theme-color="rgb(25,55,71)"
+  
+    data-image="/assets/img/bg.jpg"
+    data-overlay
+  
+  >
+  <article class="page" role="article">
+  <header>
+    <h1 class="page-title">Project Sothea Medical Database</h1>
+    
+
+
+
+  
+    <p class="message" >
+      Offline medical database with facial recognition hosted on a Raspberry Pi
+
+    </p>
+  
+
+
+  </header>
+
+  <ol id="markdown-toc">
+  <li><a href="#problem-statement" id="markdown-toc-problem-statement">Problem statement</a></li>
+  <li><a href="#preparation" id="markdown-toc-preparation">Preparation</a>    <ol>
+      <li><a href="#requirements-gathering" id="markdown-toc-requirements-gathering">Requirements gathering</a></li>
+      <li><a href="#use-case-modelling" id="markdown-toc-use-case-modelling">Use case modelling</a></li>
+      <li><a href="#tech-stack" id="markdown-toc-tech-stack">Tech stack</a></li>
+      <li><a href="#system-diagram" id="markdown-toc-system-diagram">System diagram</a></li>
+    </ol>
+  </li>
+  <li><a href="#implementation" id="markdown-toc-implementation">Implementation</a>    <ol>
+      <li><a href="#frontend" id="markdown-toc-frontend">Frontend</a></li>
+      <li><a href="#backend" id="markdown-toc-backend">Backend</a></li>
+      <li><a href="#server-configuration" id="markdown-toc-server-configuration">Server configuration</a></li>
+    </ol>
+  </li>
+  <li><a href="#testing" id="markdown-toc-testing">Testing</a>    <ol>
+      <li><a href="#frontend-testing" id="markdown-toc-frontend-testing">Frontend testing</a></li>
+      <li><a href="#backend-testing" id="markdown-toc-backend-testing">Backend testing</a></li>
+      <li><a href="#hardware-stress-testing" id="markdown-toc-hardware-stress-testing">Hardware stress testing</a></li>
+      <li><a href="#user-testing" id="markdown-toc-user-testing">User testing</a></li>
+    </ol>
+  </li>
+  <li><a href="#deployment" id="markdown-toc-deployment">Deployment</a></li>
+  <li><a href="#learnings" id="markdown-toc-learnings">Learnings</a></li>
+</ol>
+
+<h1 id="problem-statement">Problem statement</h1>
+<p>We first learnt about <a href="https://www.projectsothea.org/">Project Sothea</a> through a friend who is mutually connected to them. Since Kai Xiang’s project was on the news, they learnt about the facial recognition software that he wrote and wanted him to solve their problems. We then formed a team and asked the school to recognize this project as an official school project as part of 50.003 Elements of Software Construction.</p>
+
+<p>Based on our first meeting we made the following problem statement:</p>
+
+<p>Project Sothea is an annual health screening done by NUS medical students for two Cambodian villages. This project has been ongoing for the past 8 years and will continue for the next decade. Currently they face problems in efficiently collecting data due to the constraints that they are in. Over the villages, they have no internet and no power supply, which means online collaboration and file syncing tools are out of the question. As a result, they deploy their own laptop with a local copy of Microsoft Excel to collect the data at each station. As each patient has to visit multiple stations during health screening, the health data of a patient has to be stored across multiple laptops. As a result of info being stored separately, the team has to spend more than 10 hours to collate the data back in Singapore, and sometimes the data is incomplete or has conflicts.</p>
+
+<p>The lack of a centralized source of info during the trip also means that they are unable to detect alarming health trends within the villages. To overcome this problem, the team needs a system that allows users to store the inputs into a centralized data source without a power source. Apart from this issue, the villagers do not have their date of birth or ID – the two key identification metrics for the doctors to identify the patients due to a war in the past. The identification by names is also not ideal due to the inconsistency of the names being translated by the translators from a local Cambodian university. Their names are also very similar, making fuzzy search futile. As a result, they are unable to keep track of repeat patients and their medical history. Hence, the data collected each year cannot be utilized for the next year, and their past 8 years of data rendered obsolete. Thus, the team has approached us to utilize a facial recognition system that will be able to identify patients when they come back for health screenings in future years. By having access to past records, the doctors will be better equipped to help the villagers.</p>
+
+<h1 id="preparation">Preparation</h1>
+
+<h2 id="requirements-gathering">Requirements gathering</h2>
+<p>After the first meeting, we still have many questions such as: why do they have multiple stations? how big is the area? etc. So we quickly asked them for more information and thus discovered even more requirements which are not in their initial requests. For example:</p>
+<ol>
+  <li>The pharmacy department only brings a subset of drugs available to the screening. Doctors need to know the availability of drugs when prescribing them.</li>
+  <li>Villagers often bring their family with them so there must be a way to denote that 2 patients are family members</li>
+  <li>The medical volunteers can still access WiFi at night at their hotels so we can remotely support them if needed.</li>
+  <li>Their analysis is done on excel so an export to csv function is needed. 
+The requirements gathering was very refreshing for me, as I can discover how software specifications are made from the needs of the user. I finally found the root of software engineering, as a useful software is one that people would use, based on their needs.</li>
+</ol>
+
+<h2 id="use-case-modelling">Use case modelling</h2>
+<ol>
+  <li>The volunteer sets up the Raspberry Pi server, using portable power bank, and connects their laptop to the server.</li>
+  <li>When the villagers first come in, they sit in front of the registration counter. The volunteers take a photo of him and upload it to the server. They also hand him a card with a patient ID and record his other details including his living area by cluster, name and NRIC onto the server.</li>
+  <li>When the villagers visit a screening station, e.g. eye-check station, the doctors will search him by his patient ID and the server will return with his results. The doctor then uses the previous data to help in diagnosis and record his findings onto the server. Any anomalies are also flagged to the doctor.</li>
+  <li>When the doctors prescribe medicines to the patient, they are able to access the inventory of the pharmacy station and prescribe accordingly. If they do not have the medicine anymore, the doctor will inform the patient.</li>
+  <li>After the health screening, the doctors can view the data and see those with serious health problems that needs further referral, they will then send out manpower to bring the villagers to the hospital.</li>
+  <li>Every night, the doctors will review the data and identify health trends in the villages. Remote engineer can help them troubleshoot if needed.</li>
+</ol>
+
+<p>A more detailed use case diagram can be seen below:
+
+  <hy-img root-margin="512px"  src="/assets/img/projects/sothea1.jpg" alt="" >
+    <noscript><img data-ignore  src="/assets/img/projects/sothea1.jpg" alt="" /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img></p>
+
+<h2 id="tech-stack">Tech stack</h2>
+<ol>
+  <li>Frontend - <a href="https://vuejs.org/">VueJS</a></li>
+  <li>CSS Framework - <a href="https://buefy.org/">Buefy</a></li>
+  <li>Backend - <a href="https://www.palletsprojects.com/p/flask/">Python Flask</a></li>
+  <li>Persistance - <a href="https://tinydb.readthedocs.io/en/latest/">tinyDB</a></li>
+</ol>
+
+<p>The reason for our tech stack is very simple. Because we are deploying on Raspberry Pi and we only have 3 months to do the project, we chose the tech that requires minimum setup and is the easiest to learn.</p>
+
+<h2 id="system-diagram">System diagram</h2>
+
+<p>
+  <hy-img root-margin="512px"  src="/assets/img/projects/sothea2.png" alt="" >
+    <noscript><img data-ignore  src="/assets/img/projects/sothea2.png" alt="" /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img></p>
+
+<h1 id="implementation">Implementation</h1>
+
+<h2 id="frontend">Frontend</h2>
+<p>As the <em>PIC</em> for frontend, I first created a basic wireframe based on examples of medical software GUI we found online. We did not want to confuse the doctors so we still stick with the traditional format that they are used to, but at the same time, we gave the UI a newer look by using Buefy.</p>
+
+<p>Next, I looked at the paper forms that the medical students were using and transcribed them to software requirements. I sought the possible values for each field to create validation parameters as well as search through Buefy components to find the correct UI elements. By using vue-router and vue-x, I created nice navigation flow while maintaning a global store for patient information. Since our users are non-technical people, we assumed no malicious users and thus validation is used to just prevent wrong information to be keyed into the backend.</p>
+
+<p class="figure">
+  <hy-img root-margin="512px"  src="/assets/img/projects/sothea3.jpg" alt="" >
+    <noscript><img data-ignore  src="/assets/img/projects/sothea3.jpg" alt="" /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img>
+The original paper form</p>
+
+<p class="figure">
+  <hy-img root-margin="512px"  src="/assets/img/projects/sothea4.jpg" alt="" >
+    <noscript><img data-ignore  src="/assets/img/projects/sothea4.jpg" alt="" /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img>
+Our software UI</p>
+
+<h2 id="backend">Backend</h2>
+<p>Backend is done by Kai Xiang which is Flask with tinyDB as persistance. We established communications through REST APIs with agreed upon endpoints and JSON format. Kai Xiang also implemented the facial recognition software using dlib. He also deployed both frontend and backend through nginx reverse proxy in the Raspberry Pi.</p>
+
+<h2 id="server-configuration">Server configuration</h2>
+<p>Wei Yang configured the Raspberry Pi to be a WiFi router and created a self-signed certificate for https. He also set up infrastructure for us to remotely access the Raspberry Pi.</p>
+
+<h1 id="testing">Testing</h1>
+
+<h2 id="frontend-testing">Frontend testing</h2>
+<p>Selenium testing with frontend for Buefy library. However, we needed to change some of the custom UI elements in order for it to work with Selenium since Selenium only works with the more basic HTML elements.</p>
+
+<h2 id="backend-testing">Backend testing</h2>
+<p>Unit test for Python backend functions using pytest.</p>
+
+<h2 id="hardware-stress-testing">Hardware stress testing</h2>
+<p>This is one of the more interesting ones</p>
+<ol>
+  <li>To test for network latency, we have written a small android app that keeps pinging the medical database and find out the network response time, the response time was within acceptable range.</li>
+  <li>We also tried the range of the network by attempting to connect our device to the intranet at various distance, and realized that devices are able to detect the network in a 30 metre radius, which is more than the 10 metre radius range of their requirements.</li>
+  <li>We also conducted a battery test to test whether the portable batteries we provide is able to last them the whole day, our test concludes that it is able to withstand up more than 16 hours.</li>
+</ol>
+
+<p class="figure">
+  <hy-img root-margin="512px"  src="/assets/img/projects/sothea6.png" alt="" >
+    <noscript><img data-ignore  src="/assets/img/projects/sothea6.png" alt="" /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img>
+16 devices that keeps pinging the medical database</p>
+
+<h2 id="user-testing">User testing</h2>
+<p>Of course, with Selenium and basic python unit test, we might not be able to iron out all the bugs when we integrate the frontend and backend together. And don’t forget typos (Apparently we have 3 different spellings of tuberculosis in the web application). So we have the medical volunteers to help us test out the application.</p>
+
+<p class="figure">
+  <hy-img root-margin="512px"  src="/assets/img/projects/sothea7.jpg" alt="" >
+    <noscript><img data-ignore  src="/assets/img/projects/sothea7.jpg" alt="" /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img>
+User testing in Macdonalds</p>
+
+<h1 id="deployment">Deployment</h1>
+<p>Finally the day has come to ship our software, after 2 months of development and 6 months of testing. We packed the portable batteries, web cameras and Raspberry Pi to the medical team and send them off to Cambodia. The usage of our software was a success. They have registered more than 800 patients during their health screening and the doctors have reported positive feedback when using our software. We passed the project off to our juniors for maintenance and future improvements</p>
+
+<h1 id="learnings">Learnings</h1>
+<ol>
+  <li>Tech used: VueJS, VueX, Vue-router, Buefy and Flask.</li>
+  <li>Requirements gathering is the most essential part of software development, and can be so satisfying when done right. Without proper requirements, we would not have known the validation parameters, the exact features that they need etc. Gathering requirements is not really about what the users request, but what they truly need.</li>
+  <li>Software needs testing. Despite our first foray into software testing. This project made me realize that testing software is really worth the effort as it ensures a high-quality end product.</li>
+</ol>
+
+</article>
+
+  
+
+  
+
+</main>
+
+    <hy-drawer
+  class=""
+  align="left"
+  threshold="10"
+  touch-events
+  prevent-default
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+    <div class="sidebar-bg sidebar-overlay" style="background-color:rgb(25,55,71);background-image:url(/assets/img/bg.jpg)"></div>
+
+    <div class="sidebar-sticky">
+      <div class="sidebar-about">
+        
+          <a class="no-hover" href="/" tabindex="-1">
+            <img src="/assets/img/me.jpg" class="avatar" alt="Woong Wen Tat" data-ignore />
+          </a>
+        
+        <h2 class="h1"><a href="/">Woong Wen Tat</a></h2>
+        
+        
+          <p class="">
+            Full Stack Developer
+
+          </p>
+        
+      </div>
+
+      <nav class="sidebar-nav heading" role="navigation">
+        <span class="sr-only">Navigation:</span>
+<ul>
+  
+    
+      
+      <li>
+        <a
+          id="_navigation"
+          href="/blog/"
+          class="sidebar-nav-item"
+          
+        >
+          Blog
+        </a>
+      </li>
+    
+      
+      <li>
+        <a
+          
+          href="/projects/"
+          class="sidebar-nav-item active"
+          
+        >
+          Projects
+        </a>
+      </li>
+    
+      
+      <li>
+        <a
+          
+          href="/about/"
+          class="sidebar-nav-item"
+          
+        >
+          About
+        </a>
+      </li>
+    
+  
+</ul>
+
+      </nav>
+
+      
+
+      <div class="sidebar-social">
+        <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:wentat126@yahoo.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/lumotheninja" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.linkedin.com/in/wen-tat-woong-7a74b012a" title="LinkedIn" class="no-mark-external">
+      <span class="icon-linkedin2"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+      </div>
+    </div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+  
+</hy-push-state>
+
+<!--[if gt IE 10]><!---->
+
+  <script type="module">window.__ESM__=!0; import '/assets/js/hydejack-8.5.1.js';</script>
+  <script nomodule>if (!window.__ESM__) loadJSDeferred(document.getElementById('_hrefJS').href);</script>
+  
+
+  
+
+
+<!--<![endif]-->
+
+
+
+
+<h2 class="sr-only" hidden>Templates (for web app):</h2>
+
+<template id="_animation-template" hidden>
+  <div class="animation-main fixed-top">
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template" hidden>
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template" hidden>
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_forward-template" hidden>
+  <button id="_forward" class="forward nav-btn no-hover fl">
+    <span class="sr-only">Forward</span>
+    <span class="icon-arrow-right2"></span>
+  </button>
+</template>
+
+<template id="_back-template" hidden>
+  <button id="_back" class="back nav-btn no-hover fl">
+    <span class="sr-only">Back</span>
+    <span class="icon-arrow-left2"></span>
+  </button>
+</template>
+
+<template id="_permalink-template" hidden>
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="icon-link"></span>
+  </a>
+</template>
+
+
+
+
+</body>
+</html>
