@@ -33,22 +33,27 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
 
+<meta name="robots" content="noindex">
+
 
 
   
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Blog | Woong Wen Tat</title>
+<title>Making a racing chart | Woong Wen Tat</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Blog" />
+<meta property="og:title" content="Making a racing chart" />
 <meta name="author" content="Wen Tat Woong" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Full Stack Developer who does random stuff" />
-<meta property="og:description" content="Full Stack Developer who does random stuff" />
-<link rel="canonical" href="http://localhost:4000/blog/" />
-<meta property="og:url" content="http://localhost:4000/blog/" />
+<meta name="description" content="Dota 2 Picks over the years" />
+<meta property="og:description" content="Dota 2 Picks over the years" />
+<link rel="canonical" href="http://localhost:4000/2019-12-17-dota-2-racing-charts/" />
+<meta property="og:url" content="http://localhost:4000/2019-12-17-dota-2-racing-charts/" />
 <meta property="og:site_name" content="Woong Wen Tat" />
+<meta property="og:image" content="http://localhost:4000/assets/img/blog/race_chart.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-17T00:00:00+08:00" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/blog/","headline":"Blog","author":{"@type":"Person","name":"Wen Tat Woong"},"description":"Full Stack Developer who does random stuff","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/me.jpg"},"name":"Wen Tat Woong"},"@context":"http://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/2019-12-17-dota-2-racing-charts/","headline":"Making a racing chart","dateModified":"2019-12-17T00:00:00+08:00","datePublished":"2019-12-17T00:00:00+08:00","image":"http://localhost:4000/assets/img/blog/race_chart.jpg","author":{"@type":"Person","name":"Wen Tat Woong"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2019-12-17-dota-2-racing-charts/"},"description":"Dota 2 Picks over the years","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/me.jpg"},"name":"Wen Tat Woong"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -76,7 +81,7 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
 
 
 
-<link rel="alternate" href="http://localhost:4000/blog/" hreflang="en">
+<link rel="alternate" href="http://localhost:4000/2019-12-17-dota-2-racing-charts/" hreflang="en">
 
 <link rel="shortcut icon" href="/assets/icons/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/icons/icon.png">
@@ -186,7 +191,7 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
   
     <main
   id="_main"
-  class="content fade-in layout-blog"
+  class="content fade-in layout-post"
   role="main"
   data-color="rgb(79,177,186)"
   data-theme-color="rgb(25,55,71)"
@@ -198,18 +203,14 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
   
 
 
-  
-    
-
-
 
 
 <article id="post-dota-2-racing-charts" class="page post mb6" role="article">
   <header>
     <h1 class="post-title">
-      <a href="/2019-12-17-dota-2-racing-charts/" class="flip-title">
+      
         Making a racing chart
-      </a>
+      
     </h1>
 
     <p class="post-date heading">
@@ -292,85 +293,67 @@ on <span>Dataviz</span>, <span>Games</span>, <span>Racingcharts</span>
   
     <p>I remember watching my first racing chart, which was about the values of companies, and I was like “hey, this shit is pretty cool.” I never really thought about doing it, until my friend introduced me to <a href="https://flourish.studio/examples/">flourish</a> which allows making racing charts in a painless way. Now, I am a programmer, and I know there are ways to do this without a ready made software like flourish charts, probably R’s GGPlot or JS’s DS3. Nevertheless, since I know flourish exists, I don’t have to Google on how to make a racing chart, the answer is already there. And since the answer is already there, I now thought of making a racing chart.</p>
 
+<p>Ok, now that I have the tools, I needed an interesting dataset to work with. After scouring Youtube racing chart channels for ideas, I realized that the more popular topics has been done before (i.e. movies, countries by GDP, companies market cap etc.). Of all the topics, I realized nobody had worked on the dota dataset before, and so this will be my first test.</p>
 
+<p>Opendota is a website that has an open API for us to get Dota2 data, and this will be our datasource. The main idea is to get the most picked heroes by professional players and see its rise and fall over time. I have made a Python notebook on my scrapers which I will release soon, but here are some of my thoughts about racing charts after trying it out.</p>
 
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/2019-12-17-dota-2-racing-charts/">Making a racing chart</a>
+<h1 id="needs-context">Needs context</h1>
 
-      </p>
-    </footer>
+<iframe width="800" height="480" src="https://www.youtube.com/embed/gnB7_WB8TIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<p>Taking a look at this racing chart made by another esports fan (in Unity no less!), we can see how his bar chart is obviously better. He provides context to the changes in the data by overlaying the tournaments going on in the top left corner. A CS:GO fan who takes a look at this will immediately able to connect the stats with the background information on the tournament. I find that racing charts really need some background context to explain the rise and fall of stats, else it is just a jumbled pile of stats.</p>
+
+<h1 id="better-to-accumulate-unless-the-data-is-seasonal">Better to accumulate, unless the data is seasonal</h1>
+
+<p>Racing charts are used for racing things - imagine at a 400m race, you wait for everyone to arrive before you can start the next baton, wouldn’t that be weird? Similarly, we would want the stats to be cumulative, instead of resetting at every timestamp. It is just what racing charts are good at showing! However, some stats are just difficult to do cummulatively - take this Dota stats for example. Since we are taking professional data, there would be some weeks where there would be no competition and the hero use rate would be low. There is just no way to normalize between time periods and still do it cumulatively, so here we just reset it every week. It all depends on the context of the data and what are you trying to show. A changing meta? The most used hero of all time? Your choice.</p>
+
+<h1 id="cheating-with-graphics">Cheating with graphics</h1>
+
+<p>You have heard of lying with statistics, now have you heard of cheating with graphics? In a racing chart, there are plenty of things to tune - the speed of bar growing, the speed of bar overtaking, etc. These small tweaks have a big effect on the overall presentation. For example, if you set the speed to be too fast, the movements can be very chaotic, and the data might seemed more volatile than normal. If you set it to be slow, the data seems to be more stable. A big part of making this racing chart is the tuning of the parameters, not just to make it look nice, but to add to the “lie” that you are creating with the statistics.</p>
+
+<p>Have you tried making racing charts? Do share some of your thoughts</p>
+
   
 </article>
 
+
+<hr class="dingbat related" />
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
   
     
-
-
-
-
-<article id="post-java-pass-by-reference" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title">
-      <a href="/2019-11-20-java-pass-by-reference/" class="flip-title">
-        Java Pass By Reference
-      </a>
-    </h1>
-
-    <p class="post-date heading">
-      
-      <time datetime="2019-11-20T00:00:00+08:00">20 Nov 2019</time>
-      
-      
-      
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-on <span>Java</span>
-
-    </p>
-
-    
-    
-      <div class="img lead sixteen-nine">
-        
 
 
   <hy-img
     
-    src="/assets/img/blog/java.jpg"
+    src="/assets/img/me.jpg"
+    class="avatar"
+    alt="Wen Tat Woong"
+    srcset="/assets/img/me.jpg 1x,/assets/img/me.jpg 2x"
     
-    alt="Java Pass By Reference"
   
     
     root-margin="512px"
   >
     <noscript><img data-ignore 
-    src="/assets/img/blog/java.jpg"
+    src="/assets/img/me.jpg"
+    class="avatar"
+    alt="Wen Tat Woong"
+    srcset="/assets/img/me.jpg 1x,/assets/img/me.jpg 2x"
     
-    alt="Java Pass By Reference"
   /></noscript>
     <span class="loading" slot="loading" hidden>
       <span class="icon-cog"></span>
@@ -378,64 +361,118 @@ on <span>Java</span>
   </hy-img>
 
 
-      </div>
+  
+
+  
+  
+  <h2  class="page-title hr">
+    About
+  </h2>
+
+  <p>Wen Tat is the software developer who almost became an electrical engineer. As a software noobie, he’s curious about how everything works and wants to try his hand at everything.</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
       
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:wentat126@yahoo.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/lumotheninja" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.linkedin.com/in/wen-tat-woong-7a74b012a" title="LinkedIn" class="no-mark-external">
+      <span class="icon-linkedin2"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
     
 
-    
 
 
 
   
-    <p class="message" >
-      How a Java snippet about serialization taught me about object references
-
-    </p>
-  
-
-
-  </header>
 
   
-    <p>I have always heard people mentioning about Java, and how Java Objects pass by reference, while Java primitives pass by value. I think it can be simply compared to mutable and immutable objects from Python. Consider the code snippet below:</p>
-
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/2019-11-20-java-pass-by-reference/">Java Pass By Reference</a>
-
-      </p>
-    </footer>
   
-</article>
-
-  
-
-  <h2 class="sr-only">Pagination</h2>
-<nav class="pagination heading clearfix" role="navigation">
-  <ul>
-    <li class="pagination-item older" >
-      
-      
-      
-  <span class=" ">Older</span>
-
-
-    </li>
-    <li class="pagination-item newer" >
-      
-      
-      
-  <span class=" ">Newer</span>
-
-
-    </li>
-  </ul>
-</nav>
-
 
 
   
@@ -482,7 +519,7 @@ on <span>Java</span>
         <a
           id="_navigation"
           href="/blog/"
-          class="sidebar-nav-item active"
+          class="sidebar-nav-item"
           
         >
           Blog
