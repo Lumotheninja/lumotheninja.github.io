@@ -37,21 +37,21 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
 
   
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>PascalVOC 2012 Object Classification Challenge | Woong Wen Tat</title>
+<title>2017 Startathon | Woong Wen Tat</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="PascalVOC 2012 Object Classification Challenge" />
+<meta property="og:title" content="2017 Startathon" />
 <meta name="author" content="Wen Tat Woong" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="20th place on the PascalVOC 2012 object classification challenge global leaderboard." />
-<meta property="og:description" content="20th place on the PascalVOC 2012 object classification challenge global leaderboard." />
-<link rel="canonical" href="http://localhost:4000/projects/pascalvoc/" />
-<meta property="og:url" content="http://localhost:4000/projects/pascalvoc/" />
+<meta name="description" content="The time when we created a bad buckle by design" />
+<meta property="og:description" content="The time when we created a bad buckle by design" />
+<link rel="canonical" href="http://localhost:4000/projects/2017_startathon/" />
+<meta property="og:url" content="http://localhost:4000/projects/2017_startathon/" />
 <meta property="og:site_name" content="Woong Wen Tat" />
-<meta property="og:image" content="http://localhost:4000/%7B%7Bsite.baseurl%7D%7D/assets/img/projects/pascalvoc1.jpg" />
+<meta property="og:image" content="http://localhost:4000/%7B%7Bsite.baseurl%7D%7D/assets/img/projects/startathon1.jpg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-04-02T23:08:36+08:00" />
+<meta property="article:published_time" content="2020-04-03T16:45:23+08:00" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/projects/pascalvoc/","headline":"PascalVOC 2012 Object Classification Challenge","dateModified":"2020-04-02T23:08:36+08:00","datePublished":"2020-04-02T23:08:36+08:00","image":"http://localhost:4000/%7B%7Bsite.baseurl%7D%7D/assets/img/projects/pascalvoc1.jpg","author":{"@type":"Person","name":"Wen Tat Woong"},"description":"20th place on the PascalVOC 2012 object classification challenge global leaderboard.","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/me.jpg"},"name":"Wen Tat Woong"},"@context":"http://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/projects/2017_startathon/","headline":"2017 Startathon","dateModified":"2020-04-03T16:45:23+08:00","datePublished":"2020-04-03T16:45:23+08:00","image":"http://localhost:4000/%7B%7Bsite.baseurl%7D%7D/assets/img/projects/startathon1.jpg","author":{"@type":"Person","name":"Wen Tat Woong"},"description":"The time when we created a bad buckle by design","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/me.jpg"},"name":"Wen Tat Woong"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -79,7 +79,7 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
 
 
 
-<link rel="alternate" href="http://localhost:4000/projects/pascalvoc/" hreflang="en">
+<link rel="alternate" href="http://localhost:4000/projects/2017_startathon/" hreflang="en">
 
 <link rel="shortcut icon" href="/assets/icons/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/icons/icon.png">
@@ -200,14 +200,14 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
   >
   <article class="page" role="article">
   <header>
-    <h1 class="page-title">PascalVOC 2012 Object Classification Challenge</h1>
+    <h1 class="page-title">2017 Startathon</h1>
     
 
 
 
   
     <p class="message" >
-      20th place on the PascalVOC 2012 object classification challenge global leaderboard.
+      The time when we created a bad buckle by design
 
     </p>
   
@@ -216,132 +216,71 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
   </header>
 
   <ol id="markdown-toc">
-  <li><a href="#problem-statement" id="markdown-toc-problem-statement">Problem statement</a></li>
-  <li><a href="#exploratory-data-analysis" id="markdown-toc-exploratory-data-analysis">Exploratory Data Analysis</a></li>
-  <li><a href="#implementation" id="markdown-toc-implementation">Implementation</a>    <ol>
-      <li><a href="#transfer-learning" id="markdown-toc-transfer-learning">Transfer learning</a></li>
-      <li><a href="#data-augmentation" id="markdown-toc-data-augmentation">Data augmentation</a></li>
-    </ol>
-  </li>
-  <li><a href="#the-results" id="markdown-toc-the-results">The results</a></li>
+  <li><a href="#prompt" id="markdown-toc-prompt">Prompt</a></li>
+  <li><a href="#preparation" id="markdown-toc-preparation">Preparation</a></li>
+  <li><a href="#solution" id="markdown-toc-solution">Solution</a></li>
+  <li><a href="#results" id="markdown-toc-results">Results</a></li>
   <li><a href="#learnings" id="markdown-toc-learnings">Learnings</a></li>
-  <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
 </ol>
 
-<h1 id="problem-statement">Problem statement</h1>
+<h1 id="prompt">Prompt</h1>
 
-<p>There are a number of challenges associated with the <a href="http://host.robots.ox.ac.uk/pascal/VOC/">PascalVOC 2012 dataset</a>, which is obtained from Flickr. The tasks include object classification (multilabel classification), object detection, object segmentation, human layout and action classification. The main goal of this challenge is to recognize objects from a number of visual object classes in realistic scenes (i.e. not pre-segmented objects). It is fundamentally a supervised learning learning problem in that a training set of labelled images is provided.</p>
+<p>We were only given the prompt one day before. The prompts are:</p>
+<ol>
+  <li>How may we design an inspection device that can inspect crane-like structures autonomously and from a distance of not more than one meter for accurate inspections?</li>
+  <li>How might we leverage on technology to encourage staff to voluntarily uphold safety in the workplace?</li>
+  <li>How would you transform public health in Singapore?</li>
+</ol>
 
-<p>To tackle the object classification problem , we train a neural network to automatically predict the label(s) for an image. This is a multilabel classification problem as there might be multiple classes for an image.</p>
+<h1 id="preparation">Preparation</h1>
 
-<h1 id="exploratory-data-analysis">Exploratory Data Analysis</h1>
+<p>After our Google hackathon, we were thinking that perhaps we can replicate our success by using “innovation” as opposed to impressive technological breakthroughs to win. So, not much preparation once again. Also, the prompts are released only 1 day before so we cannot prepare much realistically.</p>
 
-<p>There are 11,530 images in the PascalVOC 2012 dataset consisting of the following 20 classes: person, bird, cat, cow, dog, horse, sheep, aeroplane, bicycle, boat, bus, car, motorbike, train, bottle, chair, dining table, potted plant, sofa and monitor/tv. Besides the images, a file containing the annotations in XML format is also provided.</p>
-
-<p>Here is a sample of 100 images from the dataset.
-
-  <hy-img root-margin="512px"  src="/assets/img/projects/pascalvoc1.png" alt="" class="lead" data-width="800" data-height="100" >
-    <noscript><img data-ignore  src="/assets/img/projects/pascalvoc1.png" alt="" class="lead" data-width="800" data-height="100" /></noscript>
-    <span class="loading" slot="loading" hidden>
-      <span class="icon-cog"></span>
-    </span>
-  </hy-img></p>
-
-<p>The distribution of the dataset is as below. As you can see, it is unbalanced with most images being labelled as “person”:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-  person :  9583
--  cow :  340
--  boat :  549
--  pottedplant :  613
--  motorbike :  575
--  diningtable :  691
--  train :  589
--  chair :  1366
--  dog :  1341
--  bird :  811
--  car :  1284
--  tvmonitor :  645
--  bus :  467
--  sofa :  742
--  sheep :  357
--  aeroplane :  716
--  horse :  526
--  bicycle :  603
--  cat :  1128
--  bottle :  812
-</code></pre></div></div>
+<p>I teamed up with Kai Xiang again and some juniors from SUTD (Lionell and friends)</p>
 
 <p>
-  <hy-img root-margin="512px"  src="/assets/img/projects/pascalvoc2.png" alt="" >
-    <noscript><img data-ignore  src="/assets/img/projects/pascalvoc2.png" alt="" /></noscript>
+  <hy-img root-margin="512px"  src="/assets/img/projects/startathon1.jpg" alt="" >
+    <noscript><img data-ignore  src="/assets/img/projects/startathon1.jpg" alt="" /></noscript>
     <span class="loading" slot="loading" hidden>
       <span class="icon-cog"></span>
     </span>
   </hy-img></p>
 
-<p>However, since this is a multilabel problem, the imbalance does not bother us as we do not <em>force</em> the classifier to predict one class, but to predict multiple classes if possible.</p>
+<h1 id="solution">Solution</h1>
 
-<p>A check with a simple script also reveals all images to be 3-channel coloured. With the data being very clean, and the features being only the images, we can then apply the standard deep learning methods.</p>
+<p>When we got the prompt, we started brainstorming for ideas and we quickly settled on problem 2. Problem 1 seems too specific and problem 3 seems too generic. Plus, problem 2 seems to be one where we can “cheat” our way through with an innovative solution.</p>
 
-<h1 id="implementation">Implementation</h1>
+<p>After discussing with the team, including auto-equip PPEs, detector gentries and IOT helmets, we settled on a low tech solution - PPEs that are easy to put on, but difficult to take off. We had a big laugh when we settled on the solution name - “a shitty buckle by design”, a play on our university motto. The design was meant to be uncomfortable so that users can overcome their bad habits of taking off their PPE. Here ia an example of <a href="http://www.erikaskin.com/index.php?/projects/design-to-annoy/">bad design for good</a>, which we tried to emulate.</p>
 
-<h2 id="transfer-learning">Transfer learning</h2>
+<p>Our first idea is a buckle that requires 2 hands to take off. Such buckle design would make it <em>sublty</em> difficult for workers to take off their helmets by pressing the buckle and removing it in one swiping motion. The keyword is subtly here, so we need to create a design that helps discourage behaviour of removing PPE yet making sure that it can be removed as required.</p>
 
-<p>We used the Resnet34 neural network architecture loaded using Pytorch’s model zoo. The Resnet has been pretrained with the Imagenet dataset, so we used transfer learning by keeping the pretrained weights and changing only the final fully connected layer.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">resnet34</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h2 id="data-augmentation">Data augmentation</h2>
-
-<p>During training, we processed the data fed into our neural network by the following transformations. The crops are necessary to make the it a standardized input and the five crop is to let the classifier see the edges of the images. The final transform is normalizing the data to the mean and standard deviation of the Imagenet dataset since we are using transfer learning.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">transforms</span><span class="o">.</span><span class="n">FiveCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
-<span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()</span>
-<span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">])</span>
-</code></pre></div></div>
-
-<p class="figure">
-  <hy-img root-margin="512px"  src="/assets/img/projects/pascalvoc3.jpg" alt="" >
-    <noscript><img data-ignore  src="/assets/img/projects/pascalvoc3.jpg" alt="" /></noscript>
+<p>
+  <hy-img root-margin="512px"  src="/assets/img/projects/startathon2.jpg" alt="" >
+    <noscript><img data-ignore  src="/assets/img/projects/startathon2.jpg" alt="" /></noscript>
     <span class="loading" slot="loading" hidden>
       <span class="icon-cog"></span>
     </span>
-  </hy-img>
-Example of objects at the corner</p>
+  </hy-img></p>
 
-<p>During evaluation, we did not use five crop. The reason being that if the 5 evaluations yield different values and if we add them up, we might end up adding too much noise to our output. Thus, we decided to only use center crop with the risk that we might miss the objects at the corners.</p>
+<p>Once we got the concept and the idea across. Me and Kai Xiang quickly tried to prototype such a buckle. After some sewing, sawing and glueing, we managed to create a working prototype. It looks super funky and janky, but hey it works!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">280</span><span class="p">)</span>
-<span class="n">transforms</span><span class="o">.</span><span class="n">CenterCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
-<span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()</span>
-<span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">])</span>
-</code></pre></div></div>
-
-<h1 id="the-results">The results</h1>
-
-<p>We achieved pretty good results for our classifier, achieving <a href="https://medium.com/@hfdtsinghua/calculate-mean-average-precision-map-for-multi-label-classification-b082679d31be">mean average precision</a> of 0.844 and number 20 on the global leaderboard. Part of our success comes from the fact that we have done many data augmentation such as five crop for training and transfer learning from the Imagenet dataset which leads to more robust classification. Although this is a pretty old challenge (it ended in 2012), I learnt a lot about deep learning, particularly on the power of transfer learning and feature transformation and how you don’t have to use the latest models to achieve good results.</p>
-
-<p class="figure">
-  <hy-img root-margin="512px"  src="/assets/img/projects/pascalvoc4.png" alt="" >
-    <noscript><img data-ignore  src="/assets/img/projects/pascalvoc4.png" alt="" /></noscript>
+<p>
+  <hy-img root-margin="512px"  src="/assets/img/projects/startathon3.jpg" alt="" >
+    <noscript><img data-ignore  src="/assets/img/projects/startathon3.jpg" alt="" /></noscript>
     <span class="loading" slot="loading" hidden>
       <span class="icon-cog"></span>
     </span>
-  </hy-img>
-Top 20 cats, they come in different shapes and sizes.</p>
+  </hy-img></p>
+
+<h1 id="results">Results</h1>
+<p>In contrast to our Google hackathon, when we presented our solution, the judges were not impressed. In fact, they were much more impressed with the many IOT helmets that other groups are presenting. We returned empty handed this time, our “innovation solutions” hypothesis proven wrong.</p>
+
+<p>Interestingly, there was a dude who talked to us afterwards wanting to manufacture our buckles. However, that didn’t happen after we emailed him twice and he didn’t reply.</p>
 
 <h1 id="learnings">Learnings</h1>
 <ol>
-  <li>Tech used: pytorch and flask.</li>
-  <li>Data augmentation is very important to an image-related task, maybe even more than finetuning the model</li>
-  <li>A requirements of the projects is to have a GUI to view the images classified, such visualizations have made us realize what sorts of augmentations are suitable such as five crop.</li>
-</ol>
-
-<h1 id="reference">Reference</h1>
-<ol>
-  <li>Project code: https://github.com/Lumotheninja/50.039-deep-learning/tree/master/deep-learning-project</li>
+  <li>My first overnight and hardware hackathon, it was really fun making stuff and having snacks to eat 24 hours, it was definitely an intense experience but worth it.</li>
+  <li>My “innovation” hypothesis was proven wrong. Clearly, this hackathon is a <strong>technology</strong> hackathon, where impressive technologies trump over innovative solutions. I think the “innovation” hypothesis only works for idea hackathon where creative solutions are emphasized more.</li>
 </ol>
 
 </article>
@@ -406,18 +345,6 @@ Top 20 cats, they come in different shapes and sizes.</p>
           
         >
           Projects
-        </a>
-      </li>
-    
-      
-      <li>
-        <a
-          
-          href="/euler/"
-          class="sidebar-nav-item"
-          
-        >
-          Euler
         </a>
       </li>
     
