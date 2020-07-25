@@ -33,25 +33,27 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
 
+<meta name="robots" content="noindex">
+
 
 
   
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>2017 Startathon | Woong Wen Tat</title>
+<title>Are load balancers a single point of failure | Woong Wen Tat</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="2017 Startathon" />
+<meta property="og:title" content="Are load balancers a single point of failure" />
 <meta name="author" content="Wen Tat Woong" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="The time when we created a bad buckle by design" />
-<meta property="og:description" content="The time when we created a bad buckle by design" />
-<link rel="canonical" href="http://localhost:4000/projects/2017_startathon/" />
-<meta property="og:url" content="http://localhost:4000/projects/2017_startathon/" />
+<meta name="description" content="Who load balances the load balancer" />
+<meta property="og:description" content="Who load balances the load balancer" />
+<link rel="canonical" href="http://localhost:4000/2020-07-25-load-balancers-a-single-point-of-failure/" />
+<meta property="og:url" content="http://localhost:4000/2020-07-25-load-balancers-a-single-point-of-failure/" />
 <meta property="og:site_name" content="Woong Wen Tat" />
-<meta property="og:image" content="http://localhost:4000/%7B%7Bsite.baseurl%7D%7D/assets/img/projects/startathon1.jpg" />
+<meta property="og:image" content="http://localhost:4000/assets/img/blog/load_balancer.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-07-25T23:47:39+08:00" />
+<meta property="article:published_time" content="2020-07-25T00:00:00+08:00" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/projects/2017_startathon/","headline":"2017 Startathon","dateModified":"2020-07-25T23:47:39+08:00","datePublished":"2020-07-25T23:47:39+08:00","image":"http://localhost:4000/%7B%7Bsite.baseurl%7D%7D/assets/img/projects/startathon1.jpg","author":{"@type":"Person","name":"Wen Tat Woong"},"description":"The time when we created a bad buckle by design","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/me.jpg"},"name":"Wen Tat Woong"},"@context":"http://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/2020-07-25-load-balancers-a-single-point-of-failure/","headline":"Are load balancers a single point of failure","dateModified":"2020-07-25T00:00:00+08:00","datePublished":"2020-07-25T00:00:00+08:00","image":"http://localhost:4000/assets/img/blog/load_balancer.png","author":{"@type":"Person","name":"Wen Tat Woong"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020-07-25-load-balancers-a-single-point-of-failure/"},"description":"Who load balances the load balancer","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/me.jpg"},"name":"Wen Tat Woong"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -79,7 +81,7 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
 
 
 
-<link rel="alternate" href="http://localhost:4000/projects/2017_startathon/" hreflang="en">
+<link rel="alternate" href="http://localhost:4000/2020-07-25-load-balancers-a-single-point-of-failure/" hreflang="en">
 
 <link rel="shortcut icon" href="/assets/icons/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/icons/icon.png">
@@ -189,7 +191,7 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
   
     <main
   id="_main"
-  class="content fade-in layout-page"
+  class="content fade-in layout-post"
   role="main"
   data-color="rgb(79,177,186)"
   data-theme-color="rgb(25,55,71)"
@@ -198,16 +200,89 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
     data-overlay
   
   >
-  <article class="page" role="article">
+  
+
+
+
+
+<article id="post-load-balancers-a-single-point-of-failure" class="page post mb6" role="article">
   <header>
-    <h1 class="page-title">2017 Startathon</h1>
+    <h1 class="post-title">
+      
+        Are load balancers a single point of failure
+      
+    </h1>
+
+    <p class="post-date heading">
+      
+      <time datetime="2020-07-25T00:00:00+08:00">25 Jul 2020</time>
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+on <span>System design</span>
+
+    </p>
+
+    
+    
+      <div class="img lead sixteen-nine">
+        
+
+
+  <hy-img
+    
+    src="/assets/img/blog/load_balancer.png"
+    
+    alt="Are load balancers a single point of failure"
+  
+    
+    root-margin="512px"
+  >
+    <noscript><img data-ignore 
+    src="/assets/img/blog/load_balancer.png"
+    
+    alt="Are load balancers a single point of failure"
+  /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img>
+
+
+      </div>
+      
+    
+
     
 
 
 
   
     <p class="message" >
-      The time when we created a bad buckle by design
+      Who load balances the load balancer
 
     </p>
   
@@ -215,75 +290,190 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
 
   </header>
 
-  <ol id="markdown-toc">
-  <li><a href="#prompt" id="markdown-toc-prompt">Prompt</a></li>
-  <li><a href="#preparation" id="markdown-toc-preparation">Preparation</a></li>
-  <li><a href="#solution" id="markdown-toc-solution">Solution</a></li>
-  <li><a href="#results" id="markdown-toc-results">Results</a></li>
-  <li><a href="#learnings" id="markdown-toc-learnings">Learnings</a></li>
-</ol>
+  
+    <p>After following the tutorial for <a href="https://github.com/donnemartin/system-design-primer">system design on Github</a> (which is really great BTW), I found out about how load balancers and how they can be implemented by either expensive hardware load balancers or servers running HAProxy or Nginx. However, a question has been nagging me since I started studying it.</p>
 
-<h1 id="prompt">Prompt</h1>
+<p>Who load balances the load balancer?</p>
 
-<p>We were only given the prompt one day before. The prompts are:</p>
-<ol>
-  <li>How may we design an inspection device that can inspect crane-like structures autonomously and from a distance of not more than one meter for accurate inspections?</li>
-  <li>How might we leverage on technology to encourage staff to voluntarily uphold safety in the workplace?</li>
-  <li>How would you transform public health in Singapore?</li>
-</ol>
+<p>Hear me out, if the whole point of having multiple application servers is to provide high availability (HA) with a load balancer in front of it, and thus preventing a single point of failure, then won’t the load balancer itself be a single point of failure (SPOF)? Of course, the implicit assumption here is that the load balancer is less likely fail from load as it does less heavy lifting than the application servers, it just routes traffic! However, that does not mean it cannot fail due to stuff like hardware trouble, network trouble etc. etc.</p>
 
-<h1 id="preparation">Preparation</h1>
-
-<p>After our Google hackathon, we were thinking that perhaps we can replicate our success by using “innovation” as opposed to impressive technological breakthroughs to win. So, not much preparation once again. Also, the prompts are released only 1 day before so we cannot prepare much realistically.</p>
-
-<p>I teamed up with Kai Xiang again and some juniors from SUTD (Lionell and friends)</p>
+<p>The standard response to prevent load balancers becoming a SPOF is to have multiple load balancers in a HA cluster itself. But the problem is that the client will eventually need to point towards the healthy load balancer in case of a failure. How do we do that without now introducing a new SPOF?</p>
 
 <p>
-  <hy-img root-margin="512px"  src="/assets/img/projects/startathon1.jpg" alt="" >
-    <noscript><img data-ignore  src="/assets/img/projects/startathon1.jpg" alt="" /></noscript>
+  <hy-img root-margin="512px"  src="/assets/img/blog/load_balancer_meme.png" alt="load balancer meme" >
+    <noscript><img data-ignore  src="/assets/img/blog/load_balancer_meme.png" alt="load balancer meme" /></noscript>
     <span class="loading" slot="loading" hidden>
       <span class="icon-cog"></span>
     </span>
   </hy-img></p>
 
-<h1 id="solution">Solution</h1>
+<p>What is the base case here? (At this point, developers should recognize a recursion when they see one). That’s right, DNS is actually the base case here! At the end of the day, clients connecting to servers will need to resolve the human-readable domain names to IP addresses using DNS and DNS can define multiple IPs belonging to 1 domain name. And there is no SPOF here as DNS is incredible resilient (the one connected to the internet, not those in private networks)</p>
 
-<p>When we got the prompt, we started brainstorming for ideas and we quickly settled on problem 2. Problem 1 seems too specific and problem 3 seems too generic. Plus, problem 2 seems to be one where we can “cheat” our way through with an innovative solution.</p>
+<p>But wait, why do we even need load balancers when DNS itself can do the load balancing? Why create additional servers when the DNS can do it natively? I guess its to have more control over the connections and to implement routing logic. Software load balancers can do more than just routing, you can forward requests to servers by sessions, terminate SSL or scale out servers on the fly. For full benefits, you can refer to the Github link aboout system design above.</p>
 
-<p>After discussing with the team, including auto-equip PPEs, detector gentries and IOT helmets, we settled on a low tech solution - PPEs that are easy to put on, but difficult to take off. We had a big laugh when we settled on the solution name - “a shitty buckle by design”, a play on our university motto. The design was meant to be uncomfortable so that users can overcome their bad habits of taking off their PPE. Here ia an example of <a href="http://www.erikaskin.com/index.php?/projects/design-to-annoy/">bad design for good</a>, which we tried to emulate.</p>
+<p>Besides using load balancers and DNS to achieve high HA, there is another way of doing it, which is to bundle your app with an SDK and write your routing logic within it. However, this method only works if your client is a mobile app or an internal application server. If your client is the browser, your best bet is still DNS + load servers.</p>
 
-<p>Our first idea is a buckle that requires 2 hands to take off. Such buckle design would make it <em>sublty</em> difficult for workers to take off their helmets by pressing the buckle and removing it in one swiping motion. The keyword is subtly here, so we need to create a design that helps discourage behaviour of removing PPE yet making sure that it can be removed as required.</p>
-
-<p>
-  <hy-img root-margin="512px"  src="/assets/img/projects/startathon2.jpg" alt="" >
-    <noscript><img data-ignore  src="/assets/img/projects/startathon2.jpg" alt="" /></noscript>
-    <span class="loading" slot="loading" hidden>
-      <span class="icon-cog"></span>
-    </span>
-  </hy-img></p>
-
-<p>Once we got the concept and the idea across. Me and Kai Xiang quickly tried to prototype such a buckle. After some sewing, sawing and glueing, we managed to create a working prototype. It looks super funky and janky, but hey it works!</p>
-
-<p>
-  <hy-img root-margin="512px"  src="/assets/img/projects/startathon3.jpg" alt="" >
-    <noscript><img data-ignore  src="/assets/img/projects/startathon3.jpg" alt="" /></noscript>
-    <span class="loading" slot="loading" hidden>
-      <span class="icon-cog"></span>
-    </span>
-  </hy-img></p>
-
-<h1 id="results">Results</h1>
-<p>In contrast to our Google hackathon, when we presented our solution, the judges were not impressed. In fact, they were much more impressed with the many IOT helmets that other groups are presenting. We returned empty handed this time, our “innovation solutions” hypothesis proven wrong.</p>
-
-<p>Interestingly, there was a dude who talked to us afterwards wanting to manufacture our buckles. However, that didn’t happen after we emailed him twice and he didn’t reply.</p>
-
-<h1 id="learnings">Learnings</h1>
-<ol>
-  <li>My first overnight and hardware hackathon, it was really fun making stuff and having snacks to eat 24 hours, it was definitely an intense experience but worth it.</li>
-  <li>My “innovation” hypothesis was proven wrong. Clearly, this hackathon is a <strong>technology</strong> hackathon, where impressive technologies trump over innovative solutions. I think the “innovation” hypothesis only works for idea hackathon where creative solutions are emphasized more.</li>
-</ol>
-
+  
 </article>
+
+
+<hr class="dingbat related" />
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+  <hy-img
+    
+    src="/assets/img/me.jpg"
+    class="avatar"
+    alt="Wen Tat Woong"
+    srcset="/assets/img/me.jpg 1x,/assets/img/me.jpg 2x"
+    
+  
+    
+    root-margin="512px"
+  >
+    <noscript><img data-ignore 
+    src="/assets/img/me.jpg"
+    class="avatar"
+    alt="Wen Tat Woong"
+    srcset="/assets/img/me.jpg 1x,/assets/img/me.jpg 2x"
+    
+  /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img>
+
+
+  
+
+  
+  
+  <h2  class="page-title hr">
+    About
+  </h2>
+
+  <p>Wen Tat is the owner and author of this site</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:wentat126@yahoo.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/lumotheninja" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.linkedin.com/in/wen-tat-woong-7a74b012a" title="LinkedIn" class="no-mark-external">
+      <span class="icon-linkedin2"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+
+
+  
+
+  
+  
+
 
   
 
@@ -341,7 +531,7 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
         <a
           
           href="/projects/"
-          class="sidebar-nav-item active"
+          class="sidebar-nav-item"
           
         >
           Projects
