@@ -48,7 +48,7 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
 <meta property="og:url" content="http://localhost:4000/blog/" />
 <meta property="og:site_name" content="Woong Wen Tat" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/blog/","headline":"Blog","author":{"@type":"Person","name":"Wen Tat Woong"},"description":"Newly minted engineer 👨‍💻","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/me.jpg"},"name":"Wen Tat Woong"},"@context":"http://schema.org"}</script>
+{"headline":"Blog","@type":"WebPage","url":"http://localhost:4000/blog/","author":{"@type":"Person","name":"Wen Tat Woong"},"description":"Newly minted engineer 👨‍💻","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/me.jpg"},"name":"Wen Tat Woong"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -204,6 +204,118 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
 
 
 
+<article id="post-a-first-look-at-go" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title">
+      <a href="/2020-08-29-a-first-look-at-go/" class="flip-title">
+        Learning Go - a first try
+      </a>
+    </h1>
+
+    <p class="post-date heading">
+      
+      <time datetime="2020-08-29T00:00:00+08:00">29 Aug 2020</time>
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+on <span>Go</span>
+
+    </p>
+
+    
+    
+      <div class="img lead sixteen-nine">
+        
+
+
+  <hy-img
+    
+    src="/assets/img/blog/go.png"
+    
+    alt="Learning Go - a first try"
+  
+    
+    root-margin="512px"
+  >
+    <noscript><img data-ignore 
+    src="/assets/img/blog/go.png"
+    
+    alt="Learning Go - a first try"
+  /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img>
+
+
+      </div>
+      
+    
+
+    
+
+
+
+  
+    <p class="message" >
+      The new language with an adorable mascot
+
+    </p>
+  
+
+
+  </header>
+
+  
+    <p>Go is a fairly new language, created in 2009 by Google and version 1.0 was released in 2012. According to Wikipedia, the designers wanted to address criticism of other languages in use at Google, but keep their useful characteristics:</p>
+<ul>
+  <li>static typing and run-time efficiency (like C++),</li>
+  <li>readability and usability (like Python or JavaScript)</li>
+  <li>high-performance networking and multiprocessing.</li>
+</ul>
+
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/2020-08-29-a-first-look-at-go/">Learning Go - a first try</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+  
+    
+
+
+
+
 <article id="post-load-balancers-a-single-point-of-failure" class="page post mb6" role="article">
   <header>
     <h1 class="post-title">
@@ -299,434 +411,6 @@ on <span>System design</span>
     <footer>
       <p class="read-more">
         Continue reading <a class="heading flip-title" href="/2020-07-25-load-balancers-a-single-point-of-failure/">Are load balancers a single point of failure</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-  
-    
-
-
-
-
-<article id="post-inspecting-streaming-sites" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title">
-      <a href="/2020-05-16-inspecting-streaming-sites/" class="flip-title">
-        Inspecting streaming sites using Chrome web inspector
-      </a>
-    </h1>
-
-    <p class="post-date heading">
-      
-      <time datetime="2020-05-16T00:00:00+08:00">16 May 2020</time>
-      
-      
-      
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-on <span>Video streaming</span>, <span>Reverse engineering</span>
-
-    </p>
-
-    
-    
-      <div class="img lead sixteen-nine">
-        
-
-
-  <hy-img
-    
-    src="/assets/img/blog/streaming.png"
-    
-    alt="Inspecting streaming sites using Chrome web inspector"
-  
-    
-    root-margin="512px"
-  >
-    <noscript><img data-ignore 
-    src="/assets/img/blog/streaming.png"
-    
-    alt="Inspecting streaming sites using Chrome web inspector"
-  /></noscript>
-    <span class="loading" slot="loading" hidden>
-      <span class="icon-cog"></span>
-    </span>
-  </hy-img>
-
-
-      </div>
-      
-    
-
-    
-
-
-
-  
-    <p class="message" >
-      What actually goes on when you watch a video
-
-    </p>
-  
-
-
-  </header>
-
-  
-    <p>We have all done it at some point in our lives, where we watched online movies for free on websites like putlocker, 123movies etc. The basics of video streaming sites are shown in this article on <a href="https://www.zippia.com/advice/streaming-sites-are-they-illegal-how-do-they-make-money/">zippia</a>. As a recap, streaming sites often do not host their own content, but rather offer a search service to access these types of content on 3rd party hosts. The legality of these websites are grey but they still get served DMCA notices. Users seems to be off the hook if they do not download these movies or organize a big watch party. These websites have 2 types of ads: 1. banner ads, which are displayed on their websites and 2. video ads, which are embedded within the video itself.</p>
-
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/2020-05-16-inspecting-streaming-sites/">Inspecting streaming sites using Chrome web inspector</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-  
-    
-
-
-
-
-<article id="post-first-time-legend-hs" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title">
-      <a href="/2020-04-20-first-time-legend-hs/" class="flip-title">
-        Number of games to reach legend in Hearthstone
-      </a>
-    </h1>
-
-    <p class="post-date heading">
-      
-      <time datetime="2020-04-20T00:00:00+08:00">20 Apr 2020</time>
-      
-      
-      
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-on <span>Games</span>
-
-    </p>
-
-    
-    
-      <div class="img lead sixteen-nine">
-        
-
-
-  <hy-img
-    
-    src="/assets/img/blog/D5_to_legend.jpg"
-    
-    alt="Number of games to reach legend in Hearthstone"
-  
-    
-    root-margin="512px"
-  >
-    <noscript><img data-ignore 
-    src="/assets/img/blog/D5_to_legend.jpg"
-    
-    alt="Number of games to reach legend in Hearthstone"
-  /></noscript>
-    <span class="loading" slot="loading" hidden>
-      <span class="icon-cog"></span>
-    </span>
-  </hy-img>
-
-
-      </div>
-      
-    
-
-    
-
-
-
-  
-    <p class="message" >
-      I started playing Hearthstone again because of the quarantine
-
-    </p>
-  
-
-
-  </header>
-
-  
-    <p>So last season, I managed to get Legend in Hearthstone. A combination of many things - an easier rank system, a new demon hunter class and the free time I’ve got due to the Covid-19 quarantine notice spurred me to touch Hearthstone again since I’ve quit playing it last year.</p>
-
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/2020-04-20-first-time-legend-hs/">Number of games to reach legend in Hearthstone</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-  
-    
-
-
-
-
-<article id="post-dota-2-racing-charts" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title">
-      <a href="/2019-12-17-dota-2-racing-charts/" class="flip-title">
-        Making a racing chart
-      </a>
-    </h1>
-
-    <p class="post-date heading">
-      
-      <time datetime="2019-12-17T00:00:00+08:00">17 Dec 2019</time>
-      
-      
-      
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-on <span>Dataviz</span>, <span>Games</span>, <span>Racing charts</span>
-
-    </p>
-
-    
-    
-      <div class="img lead sixteen-nine">
-        
-
-
-  <hy-img
-    
-    src="/assets/img/blog/race_chart.jpg"
-    
-    alt="Making a racing chart"
-  
-    
-    root-margin="512px"
-  >
-    <noscript><img data-ignore 
-    src="/assets/img/blog/race_chart.jpg"
-    
-    alt="Making a racing chart"
-  /></noscript>
-    <span class="loading" slot="loading" hidden>
-      <span class="icon-cog"></span>
-    </span>
-  </hy-img>
-
-
-      </div>
-      
-    
-
-    
-
-
-
-  
-    <p class="message" >
-      Dota 2 Picks over the years
-
-    </p>
-  
-
-
-  </header>
-
-  
-    <p>I remember watching my first racing chart, which was about the values of companies, and I was like “hey, this shit is pretty cool.” I never really thought about doing it, until my friend introduced me to <a href="https://flourish.studio/examples/">flourish</a> which allows making racing charts in a painless way. Now, I am a programmer, and I know there are ways to do this without a ready made software like flourish charts, probably R’s GGPlot or JS’s DS3. Nevertheless, since I know flourish exists, I don’t have to Google on how to make a racing chart, the answer is already there. And since the answer is already there, I now thought of making a racing chart.</p>
-
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/2019-12-17-dota-2-racing-charts/">Making a racing chart</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-  
-    
-
-
-
-
-<article id="post-java-pass-by-reference" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title">
-      <a href="/2019-11-20-java-pass-by-reference/" class="flip-title">
-        Java Pass By Reference
-      </a>
-    </h1>
-
-    <p class="post-date heading">
-      
-      <time datetime="2019-11-20T00:00:00+08:00">20 Nov 2019</time>
-      
-      
-      
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-on <span>Java</span>
-
-    </p>
-
-    
-    
-      <div class="img lead sixteen-nine">
-        
-
-
-  <hy-img
-    
-    src="/assets/img/blog/java.jpg"
-    
-    alt="Java Pass By Reference"
-  
-    
-    root-margin="512px"
-  >
-    <noscript><img data-ignore 
-    src="/assets/img/blog/java.jpg"
-    
-    alt="Java Pass By Reference"
-  /></noscript>
-    <span class="loading" slot="loading" hidden>
-      <span class="icon-cog"></span>
-    </span>
-  </hy-img>
-
-
-      </div>
-      
-    
-
-    
-
-
-
-  
-    <p class="message" >
-      How a Java snippet about serialization taught me about object references
-
-    </p>
-  
-
-
-  </header>
-
-  
-    <p>I have always heard people mentioning about Java, and how Java Objects pass by reference, while Java primitives pass by value. I think it can be simply compared to mutable and immutable objects from Python. Consider the code snippet below:</p>
-
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/2019-11-20-java-pass-by-reference/">Java Pass By Reference</a>
 
       </p>
     </footer>

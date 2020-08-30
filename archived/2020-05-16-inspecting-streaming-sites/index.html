@@ -39,21 +39,19 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
 
   
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Java Pass By Reference | Woong Wen Tat</title>
+<title>Inspecting streaming sites using Chrome web inspector | Woong Wen Tat</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Java Pass By Reference" />
+<meta property="og:title" content="Inspecting streaming sites using Chrome web inspector" />
 <meta name="author" content="Wen Tat Woong" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="How a Java snippet about serialization taught me about object references" />
-<meta property="og:description" content="How a Java snippet about serialization taught me about object references" />
-<link rel="canonical" href="http://localhost:4000/2019-11-20-java-pass-by-reference/" />
-<meta property="og:url" content="http://localhost:4000/2019-11-20-java-pass-by-reference/" />
+<meta name="description" content="What actually goes on when you watch a video" />
+<meta property="og:description" content="What actually goes on when you watch a video" />
+<link rel="canonical" href="http://localhost:4000/archived/2020-05-16-inspecting-streaming-sites/" />
+<meta property="og:url" content="http://localhost:4000/archived/2020-05-16-inspecting-streaming-sites/" />
 <meta property="og:site_name" content="Woong Wen Tat" />
-<meta property="og:image" content="http://localhost:4000/assets/img/blog/java.jpg" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-11-20T00:00:00+08:00" />
+<meta property="og:image" content="http://localhost:4000/assets/img/blog/streaming.png" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","url":"http://localhost:4000/2019-11-20-java-pass-by-reference/","headline":"Java Pass By Reference","dateModified":"2019-11-20T00:00:00+08:00","datePublished":"2019-11-20T00:00:00+08:00","image":"http://localhost:4000/assets/img/blog/java.jpg","author":{"@type":"Person","name":"Wen Tat Woong"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2019-11-20-java-pass-by-reference/"},"description":"How a Java snippet about serialization taught me about object references","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/me.jpg"},"name":"Wen Tat Woong"},"@context":"http://schema.org"}</script>
+{"headline":"Inspecting streaming sites using Chrome web inspector","@type":"WebPage","image":"http://localhost:4000/assets/img/blog/streaming.png","url":"http://localhost:4000/archived/2020-05-16-inspecting-streaming-sites/","author":{"@type":"Person","name":"Wen Tat Woong"},"description":"What actually goes on when you watch a video","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/me.jpg"},"name":"Wen Tat Woong"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -81,7 +79,7 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
 
 
 
-<link rel="alternate" href="http://localhost:4000/2019-11-20-java-pass-by-reference/" hreflang="en">
+<link rel="alternate" href="http://localhost:4000/archived/2020-05-16-inspecting-streaming-sites/" hreflang="en">
 
 <link rel="shortcut icon" href="/assets/icons/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/icons/icon.png">
@@ -205,17 +203,17 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
 
 
 
-<article id="post-java-pass-by-reference" class="page post mb6" role="article">
+<article id="post" class="page post mb6" role="article">
   <header>
     <h1 class="post-title">
       
-        Java Pass By Reference
+        Inspecting streaming sites using Chrome web inspector
       
     </h1>
 
     <p class="post-date heading">
       
-      <time datetime="2019-11-20T00:00:00+08:00">20 Nov 2019</time>
+      <time datetime=""></time>
       
       
       
@@ -242,7 +240,7 @@ Powered by Hydejack v8.5.1 <https://hydejack.com/>
 
 
 
-on <span>Java</span>
+on <span>Video streaming</span>, <span>Reverse engineering</span>
 
     </p>
 
@@ -254,17 +252,17 @@ on <span>Java</span>
 
   <hy-img
     
-    src="/assets/img/blog/java.jpg"
+    src="/assets/img/blog/streaming.png"
     
-    alt="Java Pass By Reference"
+    alt="Inspecting streaming sites using Chrome web inspector"
   
     
     root-margin="512px"
   >
     <noscript><img data-ignore 
-    src="/assets/img/blog/java.jpg"
+    src="/assets/img/blog/streaming.png"
     
-    alt="Java Pass By Reference"
+    alt="Inspecting streaming sites using Chrome web inspector"
   /></noscript>
     <span class="loading" slot="loading" hidden>
       <span class="icon-cog"></span>
@@ -282,7 +280,7 @@ on <span>Java</span>
 
   
     <p class="message" >
-      How a Java snippet about serialization taught me about object references
+      What actually goes on when you watch a video
 
     </p>
   
@@ -291,63 +289,59 @@ on <span>Java</span>
   </header>
 
   
-    <p>I have always heard people mentioning about Java, and how Java Objects pass by reference, while Java primitives pass by value. I think it can be simply compared to mutable and immutable objects from Python. Consider the code snippet below:</p>
+    We have all done it at some point in our lives, where we watched online movies for free on websites like putlocker, 123movies etc. The basics of video streaming sites are shown in this article on [zippia](https://www.zippia.com/advice/streaming-sites-are-they-illegal-how-do-they-make-money/). As a recap, streaming sites often do not host their own content, but rather offer a search service to access these types of content on 3rd party hosts. The legality of these websites are grey but they still get served DMCA notices. Users seems to be off the hook if they do not download these movies or organize a big watch party. These websites have 2 types of ads: 1. banner ads, which are displayed on their websites and 2. video ads, which are embedded within the video itself.
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Deserialization bomb - deserializing this stream takes forever</span>
-<span class="kd">static</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">bomb</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">Set</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;()</span>
-    <span class="n">Set</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">s1</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span>
-    <span class="n">Set</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">s2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span>
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="n">Set</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span>
-        <span class="n">Set</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span>
-        <span class="n">t1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"foo"</span><span class="o">);</span> <span class="c1">// Make t1 unequal to t2</span>
-        <span class="n">s1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">t1</span><span class="o">);</span> <span class="n">s1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">t2</span><span class="o">);</span>
-        <span class="n">s2</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">t1</span><span class="o">);</span> <span class="n">s2</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">t2</span><span class="o">);</span>
-        <span class="n">s1</span> <span class="o">=</span> <span class="n">t1</span><span class="o">;</span>
-        <span class="n">s2</span> <span class="o">=</span> <span class="n">t2</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="k">return</span> <span class="nf">serialize</span><span class="o">(</span><span class="n">root</span><span class="o">);</span> <span class="c1">// Method omitted for brevity</span>
-<span class="o">}</span>
-</code></pre></div></div>
-<p><em>Source: Bloch, Effective Java, pg. 340</em></p>
+However, I would like to investigate further, in particular the behaviour of these websites. They seem to have new tabs that opens on click and disable right click. So lets try to understand the more technical questions:
+1. How are these websites designed?
+2. What requests are the websites making?
+3. What are the risks of watching a video streamed this way?
 
-<p>While Bloch is trying to teach us about the dangers of deserialization, what I saw was instead the way the variable <code class="highlighter-rouge">root</code> was changing. If one were to insert a print statement into the for loop, you would get the following printouts:</p>
+# How are these websites designed?
+So lets imagine this scenario: you Googled a movie title, and a website offers to stream it for free. You enter the website and click on the video. A new tab opens, it links to a VPN site, you closed it. There is some buffering, and the video starts to play. I have tried out the steps above by Googling "Avengers 2012 watch free" and got into a streaming website.
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[[],</span> <span class="o">[</span><span class="n">foo</span><span class="o">]]</span>
-<span class="o">[[[],</span> <span class="o">[</span><span class="n">foo</span><span class="o">]],</span> <span class="o">[[],</span> <span class="n">foo</span><span class="o">,</span> <span class="o">[</span><span class="n">foo</span><span class="o">]]]</span>
-<span class="o">[[[[],</span> <span class="o">[</span><span class="n">foo</span><span class="o">]],</span> <span class="o">[[],</span> <span class="n">foo</span><span class="o">,</span> <span class="o">[</span><span class="n">foo</span><span class="o">]]],</span> <span class="o">[[[],</span> <span class="o">[</span><span class="n">foo</span><span class="o">]],</span> <span class="n">foo</span><span class="o">,</span> <span class="o">[[],</span> <span class="n">foo</span><span class="o">,</span> <span class="o">[</span><span class="n">foo</span><span class="o">]]]]</span>
-<span class="o">[[[[[],</span> <span class="o">[</span><span class="n">foo</span><span class="o">]],</span> <span class="o">[[],</span> <span class="n">foo</span><span class="o">,</span> <span class="o">[</span><span class="n">foo</span><span class="o">]]],</span> <span class="o">[[[],</span> <span class="o">[</span><span class="n">foo</span><span class="o">]],</span> <span class="n">foo</span><span class="o">,</span> <span class="o">[[],</span> <span class="n">foo</span><span class="o">,</span> <span class="o">[</span><span class="n">foo</span><span class="o">]]]],</span> <span class="o">[[[[],</span> <span class="o">[</span><span class="n">foo</span><span class="o">]],</span> <span class="o">[[],</span> <span class="n">foo</span><span class="o">,</span> <span class="o">[</span><span class="n">foo</span><span class="o">]]],</span> <span class="n">foo</span><span class="o">,</span> <span class="o">[[[],</span> <span class="o">[</span><span class="n">foo</span><span class="o">]],</span> <span class="n">foo</span><span class="o">,</span> <span class="o">[[],</span> <span class="n">foo</span><span class="o">,</span> <span class="o">[</span><span class="n">foo</span><span class="o">]]]]]</span>
-</code></pre></div></div>
+## HTML Elements
+So first of all, we can do a simple inspect element, and we will find out that the video is embedded in an iframe. For example, a random monetized video from Youtube can be embedded with an iframe tag (this monetized part will be important later):
 
-<p>But hey, how is root getting modified? didn’t we just add <code class="highlighter-rouge">t1</code> and <code class="highlighter-rouge">t2</code> to <code class="highlighter-rouge">s1</code>, and then we even set <code class="highlighter-rouge">s1</code> to <code class="highlighter-rouge">t1</code>. Shouldn’t the reference to <code class="highlighter-rouge">root</code> be totally lost???</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1dgJeXaxACM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p>One of the revealing clues is that although <code class="highlighter-rouge">root</code> is changing, <code class="highlighter-rouge">root</code> always has 2 children. This means that the elements are added to <code class="highlighter-rouge">root</code> the first time, but it has changed. This tricky code is a combination of a cool recursive-like structure as well as the Java pass by reference. If we were to convert the code to <code class="highlighter-rouge">Python</code> and treat <code class="highlighter-rouge">HashSet</code> as a <code class="highlighter-rouge">list</code>, we can see the corresponding code as:</p>
+~~~javascript
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1dgJeXaxACM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+~~~
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">s1</span> <span class="o">=</span> <span class="n">root</span>
-<span class="n">s2</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-    <span class="n">t1</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">t2</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">t2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"foo"</span><span class="p">)</span>
-    <span class="n">s1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
-    <span class="n">s1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
-    <span class="n">s2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
-    <span class="n">s2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
-    <span class="n">s1</span> <span class="o">=</span> <span class="n">t1</span>
-    <span class="n">s2</span> <span class="o">=</span> <span class="n">t2</span>
-</code></pre></div></div>
+When you embed another website through an iFrame, it loads any HTML/CSS/JS from the embedded website within your website. It is similar to embedding a Youtube video. If you embed a video with ads from Youtube, it loads all of Youtube's HTML/CSS/JS and the video's ads will be displayed as well, as per [Youtube's policy](https://support.google.com/youtube/answer/132596?hl=en). However, Youtube's embedded video is definitely more benign, its just showing ads. The website that is embedded on streaming sites might be doing much more.
 
-<p>Seeing this code makes it clear. In the first iteration, <code class="highlighter-rouge">root</code>/<code class="highlighter-rouge">s1</code> is a list of [] and [“foo”] which is <code class="highlighter-rouge">t1</code> and <code class="highlighter-rouge">t2</code> respectively, however, when you set <code class="highlighter-rouge">s1=t1</code>, the new <code class="highlighter-rouge">s1</code> is the element inside root, the [], and when you append to it, you essentially modify it. Running the code will yield the same result as Java. This problem is tricky, but is not hard to understand once you write in out step by step and understand how Java passes by reference. After all, typesafe just means that you can’t easily convert an Object to another class, it does not mean that something is always invariant and immutable.</p>
+## Scripts
+So after looking at the HTML elements, lets look at the scripts. In this case, the scripts are minified so we are unable to understand them, but we can understand them through the behaviour. If the browser opens a new tab to another website (might even be legit websites) when you click on the video, it means that you have clicked on an ad. Most modern browsers nowadays block popups that are not requested, but in this case, you requested it ever since you click play on the movie, according to [javascript.info](https://javascript.info/popup-windows)
 
-<h1 id="til">TIL:</h1>
+~~~javascript
+// popup blocked
+window.open('https://javascript.info');
 
-<ol>
-  <li>Java pass by reference works for Objects which is kinda like having a mutable object in Python. Similarly, Java pass by value is kinda like immutable objects</li>
-  <li>Typesafe for Java only means safety for class conversion and not mutable objects.</li>
-</ol>
+// popup allowed
+button.onclick = () => {
+  window.open('https://javascript.info');
+};
+~~~
+_Source: javascript.info_
 
+Sometimes they will even outright ban right click altogether on the video. For those websites, the aim is simple, don't let your viewers/competitors download your souce by right clicking "save video as". Youtube does this as well.
+
+# What requests are the websites making?
+Using Google Chrome console, we can further see the requests that the website is making. There are 5 requests in this example, one of them an ad request from popcash.net. If I start my adblock extension on chrome, this popcash.net request will be blocked.
+
+5 requests:
+![5 requests](/assets/img/blog/5requests.jpg)
+
+
+4 requests now after adblock is activated:
+![4 requests](/assets/img/blog/4requests.jpg)
+
+One thing to pay attention here is the picture with 5 requests. As you can see, the origin of this website is not the same one as I started but rather the embedded website, which means that the request is being made from the embedded site.
+
+# What are the risks of watching a video streamed this way?
+According to cybersecurity experts, some malicious websites are able to harm your computer when you browse it by using exploit kits (but the articles are from a long time ago and they concern the use of Adobe flash player which is long known to be unsafe), so it is possible that your computer will be harmed. However, if those exploits still exists and not patched, it will be dangerous on any website, not just limited to illegal streaming sites. And we also know their motives, they are just like Youtube except they don't honour copyrights. Given the possibility that any website might be harmful and we know their motive, t is up to you to figure out whether you want to take the risk.
+
+Thank you for reading my amateur sleuthing, see you next time.
   
 </article>
 
