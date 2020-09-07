@@ -1,5 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-08-30T22:01:51+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Woong Wen Tat</title><subtitle>Newly minted engineer 👨‍💻 
-</subtitle><author><name>Wen Tat Woong</name><email>wentat126@yahoo.com</email></author><entry><title type="html">Learning Go - week 1</title><link href="http://localhost:4000/2020-08-29-a-first-look-at-go/" rel="alternate" type="text/html" title="Learning Go - week 1" /><published>2020-08-29T00:00:00+08:00</published><updated>2020-08-29T00:00:00+08:00</updated><id>http://localhost:4000/a-first-look-at-go</id><content type="html" xml:base="http://localhost:4000/2020-08-29-a-first-look-at-go/">&lt;p&gt;Go is a fairly new language, created in 2009 by Google and version 1.0 was released in 2012. According to Wikipedia, the designers wanted to address criticism of other languages in use at Google, but keep their useful characteristics:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-09-07T23:10:25+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Woong Wen Tat</title><subtitle>Newly minted engineer 👨‍💻 
+</subtitle><author><name>Wen Tat Woong</name><email>wentat126@yahoo.com</email></author><entry><title type="html">Learning Go - week 2</title><link href="http://localhost:4000/2020-09-07-learning-go-week-2/" rel="alternate" type="text/html" title="Learning Go - week 2" /><published>2020-09-07T00:00:00+08:00</published><updated>2020-09-07T00:00:00+08:00</updated><id>http://localhost:4000/learning-go-week-2</id><content type="html" xml:base="http://localhost:4000/2020-09-07-learning-go-week-2/">&lt;p&gt;This week has been slow, mainly because there was a renovation going on at my place, so I had to go to my relative’s place for work. (For the record, the year is 2020, we had a big pandemic and most of us are working from home). I just managed to:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;finish 5 Leetcode questions&lt;/li&gt;
+  &lt;li&gt;read some of &lt;a href=&quot;https://yourbasic.org/golang/#step-by-step-guides&quot;&gt;Go’s Go to guide&lt;/a&gt; articles&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This week, let us discuss slices vs array!&lt;/p&gt;
+
+&lt;h2 id=&quot;slice-vs-array&quot;&gt;Slice vs Array&lt;/h2&gt;
+&lt;p&gt;I find this &lt;a href=&quot;https://blog.golang.org/slices-intro&quot;&gt;blogpost&lt;/a&gt; by golang.org to be really good. Basically, arrays are the traditional data structure we all know - fixed length, indexed fields - an ArrayList in Java. And slices, they are the dynamic arrays we all love - the list data type in Python. Their declaration syntax is just whether you declare a size&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;arr := [3]int{}
+slc := []int{}
+slc2 := make([]int, 5)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Big deal, they look kinda the same, except they aren’t. When you assign an array to a variable, the array’s value is copied and you have another array. When you assign a slice to a variable, you have another slice referencing the same array. Change one, and you’ll change the other.&lt;/p&gt;
+
+&lt;p&gt;For example, an array:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;arr := [3]int{1,2,3}
+arr2 := arr
+arr2[0] = 2
+fmt.Println(arr, arr2) //1,2,3 2,2,3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And now a slice:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;arr := []int{1,2,3}
+arr2 := arr
+arr2[0] = 2
+fmt.Println(arr, arr2) //2,2,3 2,2,3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The difference is subtle yet important. To actually deep copy a slice (create a new underlying array and reference a new slice on it), we would need to use the copy method&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;arr := []int{1,2,3}
+arr2 := []int{1,2,3}
+copy(arr, arr2)
+arr2[0] = 2
+fmt.Println(arr, arr2) //1,2,3 2,2,3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Coming from a Python background, I am a big fan of slices, and happy that Go actually provides this neat little dynamic array implementation.&lt;/p&gt;</content><author><name>Wen Tat Woong</name><email>wentat126@yahoo.com</email></author><category term="go" /><summary type="html">This week has been slow, mainly because there was a renovation going on at my place, so I had to go to my relative’s place for work. (For the record, the year is 2020, we had a big pandemic and most of us are working from home). I just managed to: finish 5 Leetcode questions read some of Go’s Go to guide articles</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/go.png" /></entry><entry><title type="html">Learning Go - week 1</title><link href="http://localhost:4000/2020-08-29-a-first-look-at-go/" rel="alternate" type="text/html" title="Learning Go - week 1" /><published>2020-08-29T00:00:00+08:00</published><updated>2020-08-29T00:00:00+08:00</updated><id>http://localhost:4000/a-first-look-at-go</id><content type="html" xml:base="http://localhost:4000/2020-08-29-a-first-look-at-go/">&lt;p&gt;Go is a fairly new language, created in 2009 by Google and version 1.0 was released in 2012. According to Wikipedia, the designers wanted to address criticism of other languages in use at Google, but keep their useful characteristics:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;static typing and run-time efficiency (like C++),&lt;/li&gt;
   &lt;li&gt;readability and usability (like Python or JavaScript)&lt;/li&gt;
